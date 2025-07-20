@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yujin Film Solution | ฟิล์มกรองแสงรถยนต์และอาคาร</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- <link rel="stylesheet" href="style.css" /> ถ้ามี CSS เพิ่มเติม -->
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+  <!-- Navigation Bar -->
+  <header id="mainHeader" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <a href="#" class="flex items-center gap-2 text-2xl font-bold text-blue-700 tracking-wider width">
+          <img src="img/logo.png" alt="Yujin Film Logo" class="h-9 w-9 object-cover rounded-full md:h-6 md:w-6 lg:h-8 lg:w-8">
+          <span class="hidden sm:inline">YuJin Film</span>
+      </a>
+      <nav class="hidden md:flex gap-8 text-lg">
+        <a href="#features" class="hover:text-blue-600">จุดเด่น</a>
+        <a href="#products" class="hover:text-blue-600">สินค้า</a>
+        <a href="#reviews" class="hover:text-blue-600">รีวิว</a>
+        <a href="#booking" class="hover:text-blue-600">จองคิว</a>
+        <a href="#contact" class="hover:text-blue-600">ติดต่อ</a>
+      </nav>
+      <button class="md:hidden flex items-center" id="menuBtn">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h24M4 16h24M4 24h24"/></svg>
+      </button>
+    </div>
+    <div class="md:hidden hidden bg-white border-t" id="mobileMenu">
+      <a href="#features" class="block px-4 py-2 hover:bg-blue-50">จุดเด่น</a>
+      <a href="#products" class="block px-4 py-2 hover:bg-blue-50">สินค้า</a>
+      <a href="#reviews" class="block px-4 py-2 hover:bg-blue-50">รีวิว</a>
+      <a href="#booking" class="block px-4 py-2 hover:bg-blue-50">จองคิว</a>
+      <a href="#contact" class="block px-4 py-2 hover:bg-blue-50">ติดต่อ</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative h-[70vh] md:h-[80vh] flex items-center">
+    <img src="img/hero-section.jpg" alt="" class="absolute inset-0 w-full h-full object-cover object-center z-0">
+    <div class="absolute inset-0 bg-black/60 z-10"></div>
+    <div class="relative z-20 w-full max-w-7xl h-[51vh] mx-auto flex flex-col md:flex-row justify-center px-6 py-8">
+      <div class="flex-1 flex flex-col justify-between h-full">
+        <div class="py-7">
+          <h1 class="text-3xl sm:text-3xl md:text-6xl font-bold mb-4 text-white drop-shadow-x">
+            ฟิล์มกรองแสงคุณภาพ<br>เพื่อรถและบ้านคุณ
+          </h1>
+          <p class="text-base sm:text-xl md:text-2xl mb-8 text-blue-200 drop-shadow leading-relaxed">
+            กัน UV99% วิสัยทัศน์ใส
+            <br>บริการติดตั้งถึงบ้าน พร้อมรับประกัน
+          </p>
+        </div>
+        <a href="#booking" class="bg-blue-700 text-white inline-block px-8 py-3 rounded-full shadow-lg hover:bg-blue-800 duration-300 transition font-bold text-lg self-start mb-04">จองคิวติดฟิล์ม</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features -->
+  <section id="features" class="max-w-7xl mx-auto py-16 px-4">
+    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-blue-700">จุดเด่นของฟิล์ม Yujin</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="text-center p-6 rounded-xl shadow bg-gradient-to-br from-white to-blue-50">
+        <div class="text-4xl mb-3">🌡️</div>
+        <div class="font-bold text-lg mb-1">กันร้อนสูงสุด</div>
+        <div class="text-gray-500 text-sm">ลดอุณหภูมิในรถได้จริง ประหยัดพลังงานแอร์</div>
+      </div>
+      <div class="text-center p-6 rounded-xl shadow bg-gradient-to-br from-white to-blue-50">
+        <div class="text-4xl mb-3">🛡️</div>
+        <div class="font-bold text-lg mb-1">กัน UV 99%</div>
+        <div class="text-gray-500 text-sm">ปกป้องผิวและสุขภาพในทุกการเดินทาง</div>
+      </div>
+      <div class="text-center p-6 rounded-xl shadow bg-gradient-to-br from-white to-blue-50">
+        <div class="text-4xl mb-3">👀</div>
+        <div class="font-bold text-lg mb-1">มองชัดทั้งกลางวัน-คืน</div>
+        <div class="text-gray-500 text-sm">ฟิล์มใส ไม่บดบังวิสัยทัศน์ขณะขับขี่</div>
+      </div>
+      <div class="text-center p-6 rounded-xl shadow bg-gradient-to-br from-white to-blue-50">
+        <div class="text-4xl mb-3">✨</div>
+        <div class="font-bold text-lg mb-1">ไม่ลอก ไม่มัว ไม่พอง</div>
+        <div class="text-gray-500 text-sm">รับประกันคุณภาพยาวนานมากกว่า 7 ปี</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product/Brand Gallery -->
+  <section id="products" class="py-16 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-blue-700 text-center">ฟิล์มกรองแสงยอดนิยม</h2>
+      <div class="flex flex-col md:flex-row gap-8 md:gap-4 overflow-x-auto pb-4">
+        <!-- ใส่ card สินค้า (วน loop ได้ภายหลัง) -->
+        <div class="flex-shrink-0 w-80 bg-white rounded-xl shadow p-6 border-t-4 border-blue-300">
+          <img src="https://cdn.pixabay.com/photo/2017/03/27/14/56/auto-2179220_960_720.jpg"
+               class="w-full h-40 object-cover rounded-lg mb-4" alt="Ceramic Film">
+          <div class="font-bold text-xl mb-2">Yujin Ceramic IR</div>
+          <div class="text-gray-600 mb-2">กันร้อนสูงสุด เงาสวยทนทาน</div>
+          <div class="mb-4 text-blue-600 font-bold">เริ่มต้น 2,xxx.-</div>
+          <a href="#booking" class="inline-block bg-blue-600 text-white px-5 py-2 rounded-lg shadow hover:bg-blue-800 transition">สอบถาม/จอง</a>
+        </div>
+        <!-- เพิ่ม card อื่นๆ -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Review/Customer Stories -->
+  <section id="reviews" class="max-w-7xl mx-auto py-16 px-4">
+    <h2 class="text-3xl md:text-4xl font-bold mb-10 text-blue-700 text-center">รีวิวจากลูกค้าของเรา</h2>
+    <div class="flex flex-col md:flex-row gap-8 overflow-x-auto pb-4">
+      <div class="flex-shrink-0 w-80 rounded-xl shadow-lg bg-white p-6">
+        <div class="mb-4 flex items-center gap-3">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-14 h-14 rounded-full border-2 border-blue-400" />
+          <div>
+            <div class="font-bold text-lg">คุณบอย</div>
+            <div class="text-blue-500 text-sm">Honda CRV</div>
+          </div>
+        </div>
+        <div class="mb-2 text-gray-700 text-base italic">“ติดฟิล์มที่ Yujin เห็นผลทันที รถเย็นขึ้นจริง พนักงานบริการดีมาก ประทับใจ!”</div>
+        <div class="text-yellow-400 text-lg">★★★★★</div>
+      </div>
+      <!-- เพิ่มรีวิวได้ -->
+    </div>
+  </section>
+
+  <!-- Promotion Banner -->
+  <section class="py-10 px-4 bg-gradient-to-r from-blue-500 to-green-400 text-white text-center">
+    <h3 class="text-3xl md:text-4xl font-bold mb-4">โปรโมชั่นพิเศษ! เดือนนี้เท่านั้น</h3>
+    <div class="text-lg md:text-2xl mb-6">ฟรี! เคลือบกระจกมูลค่า 1,000.- สำหรับ 20 คันแรก</div>
+    <a href="#booking" class="inline-block bg-white/80 text-blue-700 font-bold px-8 py-3 rounded-full hover:bg-white/100 shadow-lg transition">รับสิทธิ์เลย</a>
+  </section>
+
+  <!-- Booking Section -->
+  <section id="booking" class="max-w-7xl mx-auto py-16 px-4">
+    <h2 class="text-3xl md:text-4xl font-bold mb-10 text-blue-700 text-center">จองคิวติดฟิล์ม/สอบถาม</h2>
+    <form class="max-w-xl mx-auto bg-white rounded-2xl shadow-lg p-8 grid gap-4">
+      <input type="text" placeholder="ชื่อของคุณ" class="border rounded-lg px-4 py-3 focus:outline-blue-400 text-lg"/>
+      <input type="tel" placeholder="เบอร์โทรติดต่อ" class="border rounded-lg px-4 py-3 focus:outline-blue-400 text-lg"/>
+      <select class="border rounded-lg px-4 py-3 focus:outline-blue-400 text-lg">
+        <option value="">เลือกรถของคุณ</option>
+        <option value="sedan">รถเก๋ง</option>
+        <option value="suv">SUV/PPV</option>
+        <option value="pickup">กระบะ</option>
+        <option value="other">อื่นๆ</option>
+      </select>
+      <textarea placeholder="รายละเอียดเพิ่มเติม (ถ้ามี)" class="border rounded-lg px-4 py-3 focus:outline-blue-400 text-lg"></textarea>
+      <button type="submit" class="bg-blue-600 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-700 transition">ส่งจองคิว/สอบถาม</button>
+    </form>
+    <div class="text-center mt-8 text-gray-500 text-base">หรือโทร <a href="tel:090-xxxxxxx" class="text-blue-600 underline">090-xxxxxxx</a></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="text-xl font-bold tracking-wide">YUJIN FILM SOLUTION</div>
+      <div class="flex gap-8 text-base">
+        <a href="#features" class="hover:text-blue-300">จุดเด่น</a>
+        <a href="#products" class="hover:text-blue-300">สินค้า</a>
+        <a href="#reviews" class="hover:text-blue-300">รีวิว</a>
+        <a href="#booking" class="hover:text-blue-300">จองคิว</a>
+        <a href="#contact" class="hover:text-blue-300">ติดต่อ</a>
+      </div>
+      <div class="flex gap-4 mt-4 md:mt-0">
+        <a href="#" class="hover:text-blue-400"><svg fill="currentColor" width="26" height="26"><circle cx="13" cy="13" r="12"/><text x="50%" y="58%" text-anchor="middle" fill="#fff" font-size="15">FB</text></svg></a>
+        <a href="#" class="hover:text-blue-400"><svg fill="currentColor" width="26" height="26"><circle cx="13" cy="13" r="12"/><text x="50%" y="58%" text-anchor="middle" fill="#fff" font-size="15">IG</text></svg></a>
+        <a href="#" class="hover:text-blue-400"><svg fill="currentColor" width="26" height="26"><circle cx="13" cy="13" r="12"/><text x="50%" y="58%" text-anchor="middle" fill="#fff" font-size="15">LI</text></svg></a>
+      </div>
+    </div>
+    <div class="text-center text-gray-400 mt-4 text-sm">&copy; 2025 Yujin Film Solution. All rights reserved.</div>
+  </footer>
+
+  <!-- <script src="main.js"></script> // แยก js ไปอีกไฟล์ -->
+</body>
+</html>

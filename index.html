@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yujin Film Solution | ฟิล์มกรองแสงรถยนต์และอาคารอันดับ 1</title>
+  <meta name="description" content="ฟิล์มกรองแสงคุณภาพสูง กัน UV 99% บริการติดตั้งถึงบ้าน รับประกัน 7 ปี ราคาย่อมเยา">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <link rel="stylesheet" href="stylesheet.css">
+  <script src="main.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <img src="img/logo.png" alt="" class="logo-icon">
+        <span>YuJin Film</span>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#problem" data-track="nav-click" data-section="problem">ปัญหา</a></li>
+          <li><a href="#solution" data-track="nav_click" data-section="solution">วิธีแก้</a></li>
+          <li><a href="#testimonials" data-track="nav_click" data-section="testimonials">รีวิว</a></li>
+          <li><a href="#contact" data-track="nav_click" data-section="contact">ติดต่อ</a></li>
+          <li><a href="booking.html" class="cta-button" data-track="header_booking_click">จองคิว</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content" data-aos="fade-up">
+      <h1>YuJin Film Solutions</h1>
+      <p>ผู้เชี่ยวชาญฟิล์มกรองแสงรถยนต์และอาคาร ประสบการณ์มากกว่า 5ปี <br>ที่ลูกค้ากว่า 10,000 รายไว้วางใจ เราคัดฟิล์มคุณภาพ พร้อมบริการติดตั้งถึงที่</p>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="problem-section" id="problem">
+    <div data-aos="fade-up">
+      <h2>ปัญหาที่คุณกำลังเจอ</h2>
+      <p style="font-size: 1.2rem; color: #6b7280; max-width: 600px; margin: 0 auto;">
+        การขับรถในแสงแดดที่แรงของประเทศไทยส่งผลกระทบต่อสุขภาพและความสบายของคุณ
+      </p>
+    </div>
+    
+    <div class="problem-grid">
+      <div class="problem-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="problem-icon">🔥</div>
+        <h3>รถร้อนเหมือนเตาอบ</h3>
+        <p>อุณหภูมิในรถสูงถึง 60°C ทำให้เปิดแอร์เต็มที่ เผาผลาญน้ำมัน</p>
+      </div>
+      
+      <div class="problem-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="problem-icon">☀️</div>
+        <h3>แสง UV เป็นอันตราย</h3>
+        <p>รังสี UV ทำลายผิวพรรณ เพิ่มความเสี่ยงมะเร็งผิวหนัง</p>
+      </div>
+      
+      <div class="problem-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="problem-icon">👀</div>
+        <h3>แสงจ้าจนแสบตา</h3>
+        <p>แสงแดดและไฟรถยนต์สะท้อนเข้าดวงตา เป็นอันตรายได้ เสี่ยงอุบัติเหตุ</p>
+      </div>
+      
+      <div class="problem-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="problem-icon">🪟</div>
+        <h3>ไม่มีความเป็นส่วนตัว</h3>
+        <p>คนภายนอกมองเห็นข้างในรถ ไม่มีความปลอดภัยส่วนบุคคล</p>
+      </div>
+
+      <div class="problem-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="problem-icon">🏠</div>
+        <h3>แดดแรง บ้านร้อน เฟอร์นิเจอร์พัง</h3>
+        <p>รังสี UV และความร้อนทำให้อุณหภูมิบ้านพุ่งสูง เฟอร์นิเจอร์ไม้แตก เบาะซีด ผนังบวม เสียเงินเปลี่ยนซ้ำๆ</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section class="solution-section" id="solution">
+    <div data-aos="fade-up">
+      <h2>ฟิล์ม YuJin แก้ปัญหาได้จริง</h2>
+      <p style="font-size: 1.2rem; color: #6b7280; max-width: 600px; margin: 0 auto;">
+        เทคโนโลยีฟิล์มกรองแสงล่าสุด นำเข้าจากญี่ปุ่น คุณภาพระดับโลก
+      </p>
+    </div>
+    
+    <div class="solution-grid">
+      <div class="solution-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="solution-icon">❄️</div>
+        <h3>ลดอุณหภูมิ 8°C</h3>
+        <p>เทคโนโลยี IR Rejection ลดความร้อนได้จริง ประหยัดน้ำมันได้ถึง 30%</p>
+      </div>
+      
+      <div class="solution-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="solution-icon">🛡️</div>
+        <h3>กัน UV 99.9%</h3>
+        <p>ปกป้องผิวพรรณและสุขภาพ ลดความเสี่ยงโรคร้ายจากรังสี UV</p>
+      </div>
+      
+      <div class="solution-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="solution-icon">👁️</div>
+        <h3>วิสัยทัศน์ใสชัด</h3>
+        <p>มองเห็นชัดเจนทั้งกลางวันและกลางคืน ไม่บดบังการมองเห็น</p>
+      </div>
+      
+      <div class="solution-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="solution-icon">💎</div>
+        <h3>คุณภาพพรีเมียม</h3>
+        <p>ไม่ลอก ไม่มัว ไม่พอง รับประกันคุณภาพนาน 7 ปีเต็ม</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Section -->
+  <section class="trust-section">
+    <div data-aos="fade-up">
+      <h2 style="margin-bottom: 3rem;">ความน่าเชื่อถือของเรา</h2>
+    </div>
+    
+    <div class="trust-grid">
+      <div class="trust-stat" data-aos="fade-up" data-aos-delay="100">
+        <div class="trust-number">5,000+</div>
+        <div class="trust-label">รถที่ติดฟิล์มแล้ว</div>
+      </div>
+      
+      <div class="trust-stat" data-aos="fade-up" data-aos-delay="200">
+        <div class="trust-number">7 ปี</div>
+        <div class="trust-label">รับประกันสินค้า</div>
+      </div>
+      
+      <div class="trust-stat" data-aos="fade-up" data-aos-delay="300">
+        <div class="trust-number">99%</div>
+        <div class="trust-label">ลูกค้าพอใจ</div>
+      </div>
+      
+      <div class="trust-stat" data-aos="fade-up" data-aos-delay="400">
+        <div class="trust-number">10 ปี</div>
+        <div class="trust-label">ประสบการณ์</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <h2 data-aos="fade-up">ลูกค้าพูดถึงเรา</h2>
+
+    <div class="testimonial-container">
+      <button class="nav-btn prev-btn" id="prevBtn" data-track="testimonial_nav" data-direction="prev">﹤</button>
+
+      <div class="testimonial-wrapper">
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial" data-aos="fade-up" data-aos-delay="100">
+            <div class="testimonial-header">
+              <img src="https://ui-avatars.com/api/?name=Title Bar&background=3b82f6&color=fff&size=64" alt="Customer" class="testimonial-avatar">
+              <div class="testimonial-info">
+                <h4>Title Bar</h4>
+                <p>Honda CRV</p>
+              </div>
+            </div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">
+              "แนะนำร้านนี้ค่ะ ติด 3M Absolute ฟิล์มกันร้อนดีคุ้มค่ากับราคา adminให้ข้อมูลครบถ้วนดี ช่างมาตรงต่อเวลา สินค้าของแท้มีใบรับประกันของ3Mให้7ปี"
+            </p>
+          </div>
+          
+          <div class="testimonial" data-aos="fade-up" data-aos-delay="200">
+            <div class="testimonial-header">
+              <img src="https://ui-avatars.com/api/?name=Piyanut Mamohchok&background=3b82f6&color=fff&size=64" alt="Customer" class="testimonial-avatar">
+              <div class="testimonial-info">
+                <h4>Piyanut Mamohchok</h4>
+                <p>Toyota Camry</p>
+              </div>
+            </div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">
+              "บริการดีค่ะ ฟิล์มก็กันร้อนดีค่ะสมราคามากๆ มาติดฟิล์มให้ถึงหน้าบ้านเลย สะดวกมากๆงานติดตั้งใช้ได้ค่ะ เท่าที่ติดมา10วันแล้วยังไม่พบเจอปัญหาอะไรค่ะทุกอย่างเรียบร้อยดีค่ะ แนะนำเลยค่ะ"
+            </p>
+          </div>
+          
+          <div class="testimonial" data-aos="fade-up" data-aos-delay="300">
+            <div class="testimonial-header">
+              <img src="https://ui-avatars.com/api/?name=Maneerat Ryu&background=3b82f6&color=fff&size=64" alt="Customer" class="testimonial-avatar">
+              <div class="testimonial-info">
+                <h4>Maneerat Ryu</h4>
+                <p>Tesla Model 3</p>
+              </div>
+            </div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">
+              "น้องadminบริการดี แนะนำฟิล์มดี มีตัวเลือกฟิล์มให้หลายยี่ห้อ งานติดตั้งเรียบร้อย ส่วนตัวชอบมากเพราะเป็นIntrovertมากๆไม่ค่อยชอบออกไปไหน ร้านนี้ดีมีบริการมาติดถึงบ้าน 👍🏻👍🏻"
+            </p>
+          </div>
+
+          <div class="testimonial" data-aos="fade-up" data-aos-delay="300">
+            <div class="testimonial-header">
+              <img src="https://ui-avatars.com/api/?name=Maneerat Ryu&background=3b82f6&color=fff&size=64" alt="Customer" class="testimonial-avatar">
+              <div class="testimonial-info">
+                <h4>Jame Ta</h4>
+                <p>Mercedes-Benz C330e</p>
+              </div>
+            </div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">
+              "พนักงานบริการดีมากๆ ให้คำแนะนำดี และหลังจากติดฟิล์มไปแล้วน้องแอดมินยังทักมาสอบถามความพึงพอใจด้วย ประทับใจมาก รถไม่ร้อนเลยครับ แอร์เย็นฉ่ำขึ้นเยอะ"
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <button class="nav-btn next-btn" id="nextBtn" data-track="testimonial_nav" data-direction="next">﹥</button>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="contact">
+    <div class="cta-content" data-aos="fade-up">
+      <h2>พร้อมแก้ปัญหารถร้อนแล้วไหม?</h2>
+      <p>จองคิววันนี้ รับส่วนลดพิเศษ 20% สำหรับลูกค้า 50 ท่านแรก</p>
+      
+      <div class="cta-buttons">
+        <a href="booking.html" class="primary-cta" data-track="cta_booking_click">
+          📅 จองคิวเลย
+        </a>
+        <a href="tel:0901234567" class="secondary-cta" data-track="phone_click" data-phone="0838650007">
+          📞 083-865-0007
+        </a>
+      </div>
+      
+      <!-- Quick Contact Form -->
+      <div class="quick-contact" data-aos="fade-up" data-aos-delay="300">
+        <h3>💬 ให้เราติดต่อกลับ</h3>
+        <form class="contact-form" id="quickContactForm" data-track="quick_contact_submit">
+          <input type="text" id="quickName" placeholder="ชื่อของคุณ" required data-track="form_field" data-field="name">
+          <input type="tel" id="quickPhone" placeholder="เบอร์โทรศัพท์" required data-track="form_field" data-field="phone">
+          <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+          <button type="submit" data-track="form_submit" data-field="submit">ขอให้โทรกลับ</button>
+        </form>
+        <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">
+          เราจะติดต่อกลับภายใน 15 นาที
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+          <div class="logo-icon">Y</div>
+          <h3>YuJin Film Solution</h3>
+        </div>
+        <p>ผู้เชี่ยวชาญฟิล์มกรองแสงมากกว่า 10 ปี ให้บริการด้วยความใส่ใจและคุณภาพระดับโลก</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>บริการ</h3>
+        <ul>
+          <li>ฟิล์มรถยนต์</li>
+          <li>ฟิล์มบ้าน-อาคาร</li>
+          <li>บริการถึงบ้าน</li>
+          <li>ซ่อม-เปลี่ยนฟิล์ม</li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>ติดต่อ</h3>
+        <ul>
+          <li>📞 090-123-4567</li>
+          <li>📧 info@yujinfilm.com</li>
+          <li>🕒 จันทร์-อาทิตย์ 8:00-19:00</li>
+          <li>📍 กรุงเทพฯ และปริมณฑล</li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>ติดตาม</h3>
+        <div class="social-links">
+          <a href="#" class="social-link" data-track="social_click" data-platform="facebook">FB</a>
+          <a href="#" class="social-link" data-track="social_click" data-platform="instagram">IG</a>
+          <a href="#" class="social-link" data-tracl="social_click" data-platform="line">LINE</a>
+        </div>
+        <p style="margin-top: 1rem;">รับข่าวสารและโปรโมชั่นพิเศษ</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 YuJin Film Solution. สงวนลิขสิทธิ์</p>
+    </div>
+  </footer>
+
+  <!-- Chat Widget -->
+  <div class="chat-widget">
+    <button class="chat-button" onclick="openChat()" data-track="chat_open">
+      <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Success Modal -->
+  <div id="successModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+    <div style="background: white; border-radius: 20px; padding: 2rem; max-width: 400px; margin: 0 1rem; text-align: center;">
+      <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
+      <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #1f2937;">ส่งข้อมูลสำเร็จ!</h3>
+      <p style="color: #6b7280; margin-bottom: 1.5rem;">เราจะติดต่อกลับภายใน 15 นาที</p>
+      <button onclick="closeSuccessModal()" style="background: #3b82f6; color: white; padding: 10px 20px; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;">
+        ตกลง
+      </button>
+    </div>
+  </div>
+
+  <div id="tracking-data" style="display: none;"
+     data-page="home"
+     data-version="1.0"
+     data-timestamp="2025-01-01">
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAxrPxDwiuOaYIaumBPIfo-I4pwus7Xq80",
+      authDomain: "yujin-film-solutions.firebaseapp.com",
+      projectId: "yujin-film-solutions",
+      storageBucket: "yujin-film-solutions.firebasestorage.app",
+      messagingSenderId: "505666612467",
+      appId: "1:505666612467:web:887cd0404bcf66186a9b86",
+      measurementId: "G-H69SZK5WKK"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="analytics.js"></script>
+</body>
