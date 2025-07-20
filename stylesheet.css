@@ -387,7 +387,6 @@
       text-align: center;
       width: 100%;
       margin: 0 auto;
-      border: 1px solid #e5e7eb;
     }
 
     .testimonials h2 {
@@ -403,6 +402,8 @@
         align-items: center;
         gap: 0.5rem;
         width: 100%;
+        max-width: none;
+        justify-content: center;
     }
 
     .testimonial-wrapper {
@@ -595,6 +596,12 @@
       box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
     }
 
+    .g-recaptcha {
+      margin: 1rem 0;
+      display: flex;
+      justify-content: center;
+    }
+
     /* Animations */
     @keyframes fadeInUp {
       from {
@@ -683,11 +690,16 @@
         height: 40px;
         font-size: 1.2rem;
       }
+
+      .g-recaptcha {
+        transform: scale(0.85);
+        transform-origin: center;
+      }
     }
 
     @media (max-width: 1150px) {
       .testimonial-wrapper {
-        max-width: calc(350px *2 * 2rem * 1); /* = 732px */
+        max-width: calc(350px *2 + 2rem * 1); /* = 732px */
       }
     }
 
@@ -701,5 +713,11 @@
       .cta-buttons {
         flex-direction: row;
         justify-content: center;
+      }
+    }
+
+    @media (min-width: 1151px) {
+      .testimonial-wrapper {
+        max-width: calc(350px * 3 + 2rem * 2); /* = 1174px */
       }
     }
