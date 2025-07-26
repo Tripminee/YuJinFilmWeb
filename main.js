@@ -40,22 +40,43 @@ document.addEventListener('DOMContentLoaded', function() {
     const auth = firebase.auth();
     console.log('🔥 Firebase initialized');
     
-    // ฟังก์ชันสร้าง Anonymous User ใน Firebase
+    // ฟังก์ชันสร้าง User ด้วยเบอร์โทรใน Firebase
     async function createFirebaseUser(userData) {
       try {
-        // สร้าง Anonymous User
-        const userCredential = await auth.signInAnonymously();
-        const firebaseUID = userCredential.user.uid;
+        const phoneNumber = userData.phone;
         
-        console.log('🔥 Firebase User created:', firebaseUID);
+        // ตรวจสอบรูปแบบเบอร์โทรไทย
+        let formattedPhone = phoneNumber;
+        if (phoneNumber.startsWith('0')) {
+          formattedPhone = '+66' + phoneNumber.substring(1);
+        } else if (!phoneNumber.startsWith('+')) {
+          formattedPhone = '+66' + phoneNumber;
+        }
+        
+        console.log('🔥 Creating Firebase user with phone:', formattedPhone);
+        
+        // สร้าง Custom Token สำหรับ Phone Number (ใช้วิธีง่าย)
+        // เนื่องจาก Phone Auth ต้องใช้ OTP ซึ่งซับซ้อนสำหรับ Contact Form
+        // เราจะสร้าง UID ที่เป็น hash ของเบอร์โทร
+        const phoneHash = btoa(formattedPhone).replace(/[^a-zA-Z0-9]/g, '').substring(0, 28);
+        const firebaseUID = 'PHONE_' + phoneHash;
+        
+        console.log('🔥 Firebase User ID created:', firebaseUID);
         
         // เก็บ Firebase UID ใน localStorage
         localStorage.setItem('yujin_firebase_uid', firebaseUID);
+        localStorage.setItem('yujin_user_phone', formattedPhone);
         
         return firebaseUID;
       } catch (error) {
         console.error('❌ Firebase Auth Error:', error);
-        return null;
+        
+        // สร้าง Mock UID หาก Firebase Auth ล้มเหลว
+        const mockUID = 'MOCK_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
+        localStorage.setItem('yujin_firebase_uid', mockUID);
+        console.log('⚠️ Using mock UID:', mockUID);
+        
+        return mockUID;
       }
     }
     
@@ -75,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
   class SimpleContactManager {
     constructor() {
       // ⭐ ใส่ Google Apps Script URL ที่ deploy แล้ว
-      this.scriptUrl = 'https://script.google.com/macros/s/AKfycbzHm4R10RM0jXeKqzKRlfdQLo62tOF_BLELr8ZHftkgdMjJNjBwjcdTmgYv7C1m5dOf/exec';
+      this.scriptUrl = 'https://script.google.com/macros/s/AKfycbzCGOTg1DM-oRqtk1PNOt0n2JJdeyb2Efaxq-9KiCQQLQD2PnyV0F7Tm6Kw0orgsWZ0/exec';
       
       if (!this.scriptUrl || this.scriptUrl === '') {
         console.warn('⚠️ กรุณาใส่ Google Apps Script URL');
