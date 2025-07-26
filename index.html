@@ -11,6 +11,7 @@
   
   <!-- ✅ Fixed Firebase SDK - Updated versions -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
@@ -325,23 +326,6 @@
      data-version="1.0"
      data-timestamp="2025-01-01">
   </div>
-
-  <!-- ✅ Firebase Configuration -->
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyAxrPxDwiuOaYIaumBPIfo-I4pwus7Xq80",
-      authDomain: "yujin-film-solutions.firebaseapp.com",
-      projectId: "yujin-film-solutions",
-      storageBucket: "yujin-film-solutions.firebasestorage.app",
-      messagingSenderId: "505666612467",
-      appId: "1:505666612467:web:887cd0404bcf66186a9b86",
-      measurementId: "G-H69SZK5WKK"
-    };
-    
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    console.log('🔥 Firebase initialized successfully');
-  </script>
   
   <!-- Your main script AFTER Firebase initialization -->
   <script src="main.js" defer></script>
