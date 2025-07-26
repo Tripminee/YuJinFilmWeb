@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <link rel="stylesheet" href="stylesheet.css">
-  <script src="main.js" defer></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  
+  <!-- ✅ Fixed Firebase SDK - Updated versions -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
@@ -203,7 +203,7 @@
 
           <div class="testimonial" data-aos="fade-up" data-aos-delay="300">
             <div class="testimonial-header">
-              <img src="https://ui-avatars.com/api/?name=Maneerat Ryu&background=3b82f6&color=fff&size=64" alt="Customer" class="testimonial-avatar">
+              <img src="https://ui-avatars.com/api/?name=Jame Ta&background=3b82f6&color=fff&size=64" alt="Customer" class="testimonial-avatar">
               <div class="testimonial-info">
                 <h4>Jame Ta</h4>
                 <p>Mercedes-Benz C330e</p>
@@ -326,6 +326,7 @@
      data-timestamp="2025-01-01">
   </div>
 
+  <!-- ✅ Firebase Configuration -->
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyAxrPxDwiuOaYIaumBPIfo-I4pwus7Xq80",
@@ -336,7 +337,14 @@
       appId: "1:505666612467:web:887cd0404bcf66186a9b86",
       measurementId: "G-H69SZK5WKK"
     };
+    
+    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+    console.log('🔥 Firebase initialized successfully');
   </script>
+  
+  <!-- Your main script AFTER Firebase initialization -->
+  <script src="main.js" defer></script>
   <script src="analytics.js"></script>
 </body>
+</html>
