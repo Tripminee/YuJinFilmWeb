@@ -38,51 +38,168 @@ document.addEventListener('DOMContentLoaded', function() {
   if (typeof firebase !== 'undefined') {
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
-    console.log('🔥 Firebase initialized');
+    const db = firebase.firestore();
+    console.log('🔥 Firebase initialized with Email Authentication');
     
-    // ฟังก์ชันสร้าง User ด้วยเบอร์โทรใน Firebase
-    async function createFirebaseUser(userData) {
+    // ฟังก์ชันสร้าง User อัตโนมัติจากฟอร์มติดต่อ (ใช้ email จริงและเบอร์โทรเป็น password)
+    async function createFirebaseUserFromForm(userData) {
       try {
-        const phoneNumber = userData.phone;
-        
-        // ตรวจสอบรูปแบบเบอร์โทรไทย
-        let formattedPhone = phoneNumber;
-        if (phoneNumber.startsWith('0')) {
-          formattedPhone = '+66' + phoneNumber.substring(1);
-        } else if (!phoneNumber.startsWith('+')) {
-          formattedPhone = '+66' + phoneNumber;
+        // ตรวจสอบว่ามี UID อยู่แล้วหรือไม่
+        let existingUID = localStorage.getItem('yujin_firebase_uid');
+        if (existingUID && !existingUID.startsWith('LOCAL_') && !existingUID.startsWith('PHONE_')) {
+          console.log('📌 Using existing Firebase UID:', existingUID);
+          return existingUID;
         }
         
-        console.log('🔥 Creating Firebase user with phone:', formattedPhone);
+        const email = userData.email;
+        const password = userData.phone; // ใช้เบอร์โทรเป็น password
+        const phoneNumber = userData.phone;
         
-        // สร้าง Custom Token สำหรับ Phone Number (ใช้วิธีง่าย)
-        // เนื่องจาก Phone Auth ต้องใช้ OTP ซึ่งซับซ้อนสำหรับ Contact Form
-        // เราจะสร้าง UID ที่เป็น hash ของเบอร์โทร
-        const phoneHash = btoa(formattedPhone).replace(/[^a-zA-Z0-9]/g, '').substring(0, 28);
-        const firebaseUID = 'PHONE_' + phoneHash;
+        console.log('🔥 Creating Firebase user with email:', email, 'and phone as password');
         
-        console.log('🔥 Firebase User ID created:', firebaseUID);
+        // พยายามสร้าง user ใหม่
+        try {
+          const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+          const firebaseUID = userCredential.user.uid;
+          
+          console.log('✅ Firebase User created:', firebaseUID);
+          
+          // บันทึกข้อมูลเพิ่มเติมใน Firestore
+          await db.collection('users').doc(firebaseUID).set({
+            uid: firebaseUID,
+            email: email,
+            phoneNumber: phoneNumber,
+            name: userData.name,
+            autoCreated: true,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            source: 'quick_contact_form'
+          });
+          
+          // เก็บข้อมูลใน localStorage แบบถาวร
+          localStorage.setItem('yujin_firebase_uid', firebaseUID);
+          localStorage.setItem('yujin_user_email', email);
+          localStorage.setItem('yujin_user_phone', phoneNumber);
+          localStorage.setItem('yujin_user_data', JSON.stringify({
+            uid: firebaseUID,
+            email: email,
+            phone: phoneNumber,
+            name: userData.name,
+            timestamp: new Date().toISOString()
+          }));
+          
+          return firebaseUID;
+          
+        } catch (createError) {
+          // ถ้า email มีอยู่แล้ว ให้ลอง login
+          if (createError.code === 'auth/email-already-in-use') {
+            console.log('🔍 Email exists, trying to login...');
+            
+            try {
+              const loginCredential = await auth.signInWithEmailAndPassword(email, password);
+              const firebaseUID = loginCredential.user.uid;
+              
+              console.log('✅ Logged in with existing user:', firebaseUID);
+              
+              // อัปเดต localStorage
+              localStorage.setItem('yujin_firebase_uid', firebaseUID);
+              localStorage.setItem('yujin_user_email', email);
+              localStorage.setItem('yujin_user_phone', phoneNumber);
+              localStorage.setItem('yujin_user_data', JSON.stringify({
+                uid: firebaseUID,
+                email: email,
+                phone: phoneNumber,
+                name: userData.name,
+                timestamp: new Date().toISOString()
+              }));
+              
+              return firebaseUID;
+              
+            } catch (loginError) {
+              console.error('❌ Login failed:', loginError);
+              throw loginError;
+            }
+          } else {
+            throw createError;
+          }
+        }
         
-        // เก็บ Firebase UID ใน localStorage
-        localStorage.setItem('yujin_firebase_uid', firebaseUID);
-        localStorage.setItem('yujin_user_phone', formattedPhone);
-        
-        return firebaseUID;
       } catch (error) {
         console.error('❌ Firebase Auth Error:', error);
         
-        // สร้าง Mock UID หาก Firebase Auth ล้มเหลว
-        const mockUID = 'MOCK_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
-        localStorage.setItem('yujin_firebase_uid', mockUID);
-        console.log('⚠️ Using mock UID:', mockUID);
+        // Fallback: ใช้ Email-based UID
+        const emailHash = btoa(userData.email).replace(/[^a-zA-Z0-9]/g, '').substring(0, 20);
+        const fallbackUID = 'EMAIL_' + emailHash + '_' + Date.now();
+        localStorage.setItem('yujin_firebase_uid', fallbackUID);
+        localStorage.setItem('yujin_user_email', userData.email);
+        localStorage.setItem('yujin_user_phone', userData.phone);
+        console.log('⚠️ Using email-based fallback UID:', fallbackUID);
         
-        return mockUID;
+        return fallbackUID;
       }
     }
     
-    window.createFirebaseUser = createFirebaseUser;
+    
+    // ฟังก์ชันสร้างรหัสผ่านแบบสุ่ม (สำหรับ user ที่สมัครผ่านฟอร์มติดต่อ)
+    function generateRandomPassword() {
+      return Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
+    }
+    
+    // ฟังก์ชัน tracking user ที่มีอยู่แล้ว
+    function trackExistingUser() {
+      const firebaseUID = localStorage.getItem('yujin_firebase_uid');
+      if (firebaseUID) {
+        console.log('🔍 Tracking existing user:', firebaseUID);
+        
+        // ส่ง tracking event
+        if (typeof gtag !== 'undefined') {
+          gtag('config', 'GA_MEASUREMENT_ID', {
+            user_id: firebaseUID
+          });
+        }
+        
+        // อัปเดต console
+        console.log('📊 User tracking active for UID:', firebaseUID);
+        
+        return firebaseUID;
+      }
+      return null;
+    }
+    
+    // เรียกใช้ tracking เมื่อโหลดหน้า
+    const existingUserUID = trackExistingUser();
+    
+    // เรียกใช้ฟังก์ชันสร้าง user แทนฟังก์ชันเดิม
+    window.createFirebaseUser = createFirebaseUserFromForm;
+    window.trackExistingUser = trackExistingUser;
   } else {
     console.warn('⚠️ Firebase SDK not loaded');
+    
+    // Fallback function หาก Firebase ไม่โหลด
+    window.createFirebaseUser = function(userData) {
+      const emailHash = btoa(userData.email).replace(/[^a-zA-Z0-9]/g, '').substring(0, 20);
+      const fallbackUID = 'LOCAL_' + emailHash + '_' + Date.now();
+      localStorage.setItem('yujin_firebase_uid', fallbackUID);
+      localStorage.setItem('yujin_user_email', userData.email);
+      localStorage.setItem('yujin_user_phone', userData.phone);
+      localStorage.setItem('yujin_user_data', JSON.stringify({
+        uid: fallbackUID,
+        email: userData.email,
+        phone: userData.phone,
+        name: userData.name,
+        timestamp: new Date().toISOString()
+      }));
+      console.log('⚠️ Using local fallback UID:', fallbackUID);
+      return fallbackUID;
+    };
+    
+    window.trackExistingUser = function() {
+      const firebaseUID = localStorage.getItem('yujin_firebase_uid');
+      if (firebaseUID) {
+        console.log('🔍 Tracking existing user (fallback):', firebaseUID);
+        return firebaseUID;
+      }
+      return null;
+    };
   }
   
   const track = document.getElementById('testimonialTrack');
@@ -117,12 +234,18 @@ document.addEventListener('DOMContentLoaded', function() {
           throw new Error('กรุณาใส่เบอร์โทรให้ถูกต้อง')
         }
 
-        // สร้าง Firebase UID
+        // ตรวจสอบว่ามี email หรือไม่
+        if (!contactData.email) {
+          throw new Error('กรุณากรอกอีเมล');
+        }
+
+        // สร้าง Firebase UID จากข้อมูลในฟอร์ม
         let firebaseUID = localStorage.getItem('yujin_firebase_uid');
         if (!firebaseUID && window.createFirebaseUser) {
-          console.log('🔥 Creating Firebase user...');
+          console.log('🔥 Creating Firebase user from form data...');
           firebaseUID = await window.createFirebaseUser({
             name: contactData.name,
+            email: contactData.email,
             phone: contactData.phone
           });
         }
@@ -130,6 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // เตรียมข้อมูลส่ง
         const dataToSend = {
           name: contactData.name,
+          email: contactData.email,
           phone: contactData.phone,
           message: contactData.message || 'ขอให้โทรกลับ - จากฟอร์มด่วน',
           customerId: 'customer_' + Date.now(),
@@ -314,16 +438,18 @@ if (quickContactForm) {
       }
 
       const name = document.getElementById('quickName')?.value.trim();
+      const email = document.getElementById('quickEmail')?.value.trim();
       const phone = document.getElementById('quickPhone')?.value.trim();
 
-      console.log('📝 Form data:', { name, phone });
+      console.log('📝 Form data:', { name, email, phone });
 
-      if (!name || !phone) {
-        throw new Error('กรุณากรอกชื่อและเบอร์โทรศัพท์');
+      if (!name || !email || !phone) {
+        throw new Error('กรุณากรอกชื่อ อีเมล และเบอร์โทรศัพท์');
       }
 
       const contactData = {
         name: name,
+        email: email,
         phone: phone,
         message: 'ขอให้โทรกลับ - จากฟอร์มด่วน'
       };
