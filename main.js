@@ -52,10 +52,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         const email = userData.email;
-        const password = userData.phone; // ใช้เบอร์โทรเป็น password
+        // แปลงเบอร์โทรให้เป็น password ที่ Firebase ยอมรับ (อย่างน้อย 6 ตัวอักษร)
+        // ลบขีดและช่องว่างออก แล้วเติม prefix 'PHONE_' เพื่อความปลอดภัย
+        const cleanPhone = userData.phone.replace(/[-\s]/g, '');
+        const password = 'PHONE_' + cleanPhone; // เติม prefix เพื่อให้ยาวพอและปลอดภัย
         const phoneNumber = userData.phone;
         
-        console.log('🔥 Creating Firebase user with email:', email, 'and phone as password');
+        console.log('🔥 Creating Firebase user with email:', email);
+        console.log('🔐 Using transformed password format');
         
         // พยายามสร้าง user ใหม่
         try {
@@ -95,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('🔍 Email exists, trying to login...');
             
             try {
+              // ใช้ password format เดียวกันกับตอนสร้าง
               const loginCredential = await auth.signInWithEmailAndPassword(email, password);
               const firebaseUID = loginCredential.user.uid;
               
@@ -116,6 +121,14 @@ document.addEventListener('DOMContentLoaded', function() {
               
             } catch (loginError) {
               console.error('❌ Login failed:', loginError);
+              console.error('Login error code:', loginError.code);
+              console.error('Login error message:', loginError.message);
+              
+              // อาจเป็นเพราะ password format เปลี่ยน ให้ลอง reset password
+              if (loginError.code === 'auth/wrong-password') {
+                console.log('🔄 Password format might have changed, please reset password');
+              }
+              
               throw loginError;
             }
           } else {
@@ -125,6 +138,31 @@ document.addEventListener('DOMContentLoaded', function() {
         
       } catch (error) {
         console.error('❌ Firebase Auth Error:', error);
+        console.error('Error code:', error.code);
+        console.error('Error message:', error.message);
+        
+        // แสดง error message ที่ชัดเจนตาม error code
+        let errorMessage = 'เกิดข้อผิดพลาดในการสร้างบัญชี';
+        
+        switch(error.code) {
+          case 'auth/weak-password':
+            errorMessage = 'รหัสผ่านไม่ปลอดภัยพอ (ต้องมีอย่างน้อย 6 ตัวอักษร)';
+            break;
+          case 'auth/invalid-email':
+            errorMessage = 'รูปแบบอีเมลไม่ถูกต้อง';
+            break;
+          case 'auth/email-already-in-use':
+            errorMessage = 'อีเมลนี้ถูกใช้งานแล้ว';
+            break;
+          case 'auth/network-request-failed':
+            errorMessage = 'ไม่สามารถเชื่อมต่อกับ Firebase ได้ กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ต';
+            break;
+          case 'auth/too-many-requests':
+            errorMessage = 'มีการพยายามเข้าสู่ระบบมากเกินไป กรุณาลองใหม่ภายหลัง';
+            break;
+        }
+        
+        console.error('⚠️ User-friendly error:', errorMessage);
         
         // Fallback: ใช้ Email-based UID
         const emailHash = btoa(userData.email).replace(/[^a-zA-Z0-9]/g, '').substring(0, 20);
@@ -133,6 +171,9 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('yujin_user_email', userData.email);
         localStorage.setItem('yujin_user_phone', userData.phone);
         console.log('⚠️ Using email-based fallback UID:', fallbackUID);
+        
+        // เก็บ error message ไว้แสดงให้ user
+        window.lastAuthError = errorMessage;
         
         return fallbackUID;
       }
