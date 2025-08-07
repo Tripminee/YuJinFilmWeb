@@ -40,7 +40,14 @@
   <section class="hero" id="hero">
     <div class="hero-content" data-aos="fade-up">
       <h1>YuJin Film Solutions</h1>
-      <p>ผู้เชี่ยวชาญฟิล์มกรองแสงรถยนต์และอาคาร ประสบการณ์มากกว่า 5ปี <br>ที่ลูกค้ากว่า 10,000 รายไว้วางใจ เราคัดฟิล์มคุณภาพ พร้อมบริการติดตั้งถึงที่</p>
+      <p>ผู้เชี่ยวชาญฟิล์มกรองแสงรถยนต์และอาคาร<br>คุณภาพระดับโลก บริการระดับพรีเมียม</p>
+      <div class="hero-buttons">
+        <a href="booking.html" class="hero-btn-primary" data-track="hero_booking_click">เริ่มต้นใช้บริการ</a>
+        <a href="tel:0838650007" class="hero-btn-secondary" data-track="hero_phone_click">ปรึกษาฟรี</a>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <div class="scroll-arrow"></div>
     </div>
   </section>
 
@@ -224,32 +231,100 @@
 
   <!-- CTA Section -->
   <section class="cta-section" id="contact">
-    <div class="cta-content" data-aos="fade-up">
-      <h2>พร้อมแก้ปัญหารถร้อนแล้วไหม?</h2>
-      <p>จองคิววันนี้ รับส่วนลดพิเศษ 20% สำหรับลูกค้า 50 ท่านแรก</p>
-      
-      <div class="cta-buttons">
-        <a href="booking.html" class="primary-cta" data-track="cta_booking_click">
-          📅 จองคิวเลย
-        </a>
-        <a href="tel:0838650007" class="secondary-cta" data-track="phone_click" data-phone="0838650007">
-          📞 083-865-0007
-        </a>
+    <div class="container">
+      <div class="cta-content" data-aos="fade-up">
+        <div class="cta-header">
+          <h2>เริ่มต้นแก้ปัญหารถร้อนวันนี้</h2>
+          <p class="cta-subtitle">รับส่วนลดพิเศษ 20% สำหรับลูกค้า 50 ท่านแรก</p>
+        </div>
+
+        <div class="cta-value-props">
+          <div class="value-prop">ลดอุณหภูมิในรถได้ถึง 8°C</div>
+          <div class="value-prop">กันรังสี UV 99.9% ปกป้องผิวพรรณ</div>
+          <div class="value-prop">รับประกันคุณภาพ 7 ปีเต็ม</div>
+          <div class="value-prop">บริการติดตั้งถึงบ้าน ฟรี!</div>
+        </div>
+        
+        <div class="cta-actions">
+          <div class="cta-buttons">
+            <a href="booking.html" class="btn-primary" data-track="cta_booking_click">
+              <span class="btn-icon">📅</span>
+              <span>จองคิวติดตั้ง</span>
+            </a>
+            <a href="tel:0838650007" class="btn-secondary" data-track="phone_click" data-phone="0838650007">
+              <span class="btn-icon">📞</span>
+              <span>โทรปรึกษาฟรี</span>
+            </a>
+          </div>
+          
+          <div class="divider-text">
+            <span>หรือ</span>
+          </div>
+        </div>
       </div>
       
-      <!-- Quick Contact Form -->
-      <div class="quick-contact" data-aos="fade-up" data-aos-delay="300">
-        <h3>💬 ให้เราติดต่อกลับ</h3>
-        <form class="contact-form" id="quickContactForm" data-track="quick_contact_submit">
-          <input type="text" id="quickName" placeholder="ชื่อของคุณ" required data-track="form_field" data-field="name">
-          <input type="email" id="quickEmail" placeholder="อีเมล์" required data-track="form_field" data-field="email">
-          <input type="tel" id="quickPhone" placeholder="เบอร์โทรศัพท์" required data-track="form_field" data-field="phone">
-          <div class="g-recaptcha" data-sitekey="6LcgD4krAAAAAHDeaIcST-dXbch1rPMMxowAXMGv"></div>
-          <button type="submit" data-track="form_submit" data-form="quick-contact">ขอให้โทรกลับ</button>
-        </form>
-        <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">
-          เราจะติดต่อกลับภายใน 15 นาที
-        </p>
+      <!-- Professional Contact Form -->
+      <div class="contact-form-section" data-aos="fade-up" data-aos-delay="200">
+        <div class="form-container">
+          <div class="form-header">
+            <h3>ให้เราติดต่อกลับ</h3>
+            <p>กรอกข้อมูล เราจะโทรปรึกษาภายใน 15 นาที</p>
+          </div>
+          
+          <form class="professional-form" id="quickContactForm" data-track="quick_contact_submit">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="quickName">ชื่อ-นามสกุล</label>
+                <input type="text" id="quickName" name="name" placeholder="กรอกชื่อ-นามสกุล" required 
+                       data-track="form_field" data-field="name">
+              </div>
+              
+              <div class="form-group">
+                <label for="quickPhone">หมายเลขโทรศัพท์</label>
+                <input type="tel" id="quickPhone" name="phone" placeholder="0xx-xxx-xxxx" required 
+                       data-track="form_field" data-field="phone">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="quickEmail">อีเมล</label>
+              <input type="email" id="quickEmail" name="email" placeholder="your@email.com" required 
+                     data-track="form_field" data-field="email">
+            </div>
+            
+            <div class="form-group">
+              <label for="carModel">รุ่นรถ (ถ้าทราบ)</label>
+              <input type="text" id="carModel" name="carModel" placeholder="เช่น Honda Civic, Toyota Camry" 
+                     data-track="form_field" data-field="car_model">
+            </div>
+            
+            <div class="recaptcha-container">
+              <div class="g-recaptcha" data-sitekey="6LcgD4krAAAAAHDeaIcST-dXbch1rPMMxowAXMGv"></div>
+            </div>
+            
+            <button type="submit" class="submit-btn" data-track="form_submit" data-form="quick-contact">
+              <span class="btn-text">ขอรับคำปรึกษาฟรี</span>
+              <span class="btn-arrow">→</span>
+            </button>
+            
+            <div class="form-footer">
+              <div class="trust-indicators">
+                <div class="trust-item">
+                  <span class="trust-icon">🔒</span>
+                  <span>ข้อมูลปลอดภัย</span>
+                </div>
+                <div class="trust-item">
+                  <span class="trust-icon">⚡</span>
+                  <span>ติดต่อกลับภายใน 15 นาที</span>
+                </div>
+                <div class="trust-item">
+                  <span class="trust-icon">💯</span>
+                  <span>ปรึกษาฟรี ไม่มีค่าใช้จ่าย</span>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -257,12 +332,14 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
-      <div class="footer-section">
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
-          <div class="logo-icon">Y</div>
-          <h3>YuJin Film Solution</h3>
+      <div class="footer-section footer-brand">
+        <div class="footer-brand-header">
+          <div class="logo">
+            <img src="/img/logo.png" class="logo-icon">
+          </div>
+          <h3 class="brand-title">YuJin Film Solution</h3>
         </div>
-        <p>ผู้เชี่ยวชาญฟิล์มกรองแสงมากกว่า 10 ปี ให้บริการด้วยความใส่ใจและคุณภาพระดับโลก</p>
+        <p>ผู้เชี่ยวชาญฟิล์มกรองแสงมากกว่า 10 ปี ให้บริการด้วยความใส่ใจและคุณภาพระดับโลก รับประกันคุณภาพและความพึงพอใจ 100%</p>
       </div>
       
       <div class="footer-section">
@@ -278,7 +355,7 @@
       <div class="footer-section">
         <h3>ติดต่อ</h3>
         <ul>
-          <li>📞 090-123-4567</li>
+          <li>📞 <a href="tel:0901234567" style="color: inherit; text-decoration: none;">090-123-4567</a></li>
           <li>📧 info@yujinfilm.com</li>
           <li>🕒 จันทร์-อาทิตย์ 8:00-19:00</li>
           <li>📍 กรุงเทพฯ และปริมณฑล</li>
@@ -288,9 +365,9 @@
       <div class="footer-section">
         <h3>ติดตาม</h3>
         <div class="social-links">
-          <a href="#" class="social-link" data-track="social_click" data-platform="facebook">FB</a>
+          <a href="https://www.facebook.com/profile.php?id=61569898943815" class="social-link" data-track="social_click" data-platform="facebook" target="_blank" rel="noopener noreferrer">FB</a>
           <a href="#" class="social-link" data-track="social_click" data-platform="instagram">IG</a>
-          <a href="#" class="social-link" data-track="social_click" data-platform="line">LINE</a>
+          <a href="https://lin.ee/jxXqHfI" class="social-link" data-track="social_click" data-platform="line" target="_blank" rel="noopener noreferrer">LINE</a>
         </div>
         <p style="margin-top: 1rem;">รับข่าวสารและโปรโมชั่นพิเศษ</p>
       </div>
