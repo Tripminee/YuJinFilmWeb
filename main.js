@@ -1,4 +1,44 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // ===== MOBILE NAVIGATION =====
+  const hamburger = document.getElementById('hamburgerMenu');
+  const navMenu = document.getElementById('navMenu');
+  
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking on links
+    navMenu.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      }
+    });
+  }
+
+  // ===== COLLAPSIBLE FOOTER =====
+  const footerSections = document.querySelectorAll('.footer-section');
+  footerSections.forEach(section => {
+    const header = section.querySelector('h3');
+    if (header && !section.classList.contains('footer-brand')) {
+      // Skip social links section (last child)
+      if (section === section.parentNode.lastElementChild) return;
+      
+      header.addEventListener('click', function() {
+        section.classList.toggle('active');
+      });
+    }
+  });
   // ===== USER ID MANAGEMENT =====
   function getUserId() {
     let userId = localStorage.getItem('yujin_user_id');

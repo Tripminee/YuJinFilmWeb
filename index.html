@@ -13,6 +13,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
@@ -20,12 +21,22 @@
   <!-- Header -->
   <header class="header" id="header">
     <div class="nav-container">
-      <a href="#" class="logo">
-        <img src="img/logo.png" alt="" class="logo-icon">
-        <span>YuJin Film</span>
-      </a>
+      <div class="nav-left">
+        <!-- Hamburger Menu Button -->
+        <button class="hamburger" id="hamburgerMenu" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        
+        <a href="#" class="logo">
+          <img src="img/logo.png" alt="" class="logo-icon">
+          <span>YuJin Film</span>
+        </a>
+      </div>
+      
       <nav>
-        <ul class="nav-menu">
+        <ul class="nav-menu" id="navMenu">
           <li><a href="#problem" data-track="nav_click" data-section="problem">ปัญหา</a></li>
           <li><a href="#solution" data-track="nav_click" data-section="solution">วิธีแก้</a></li>
           <li><a href="#testimonials" data-track="nav_click" data-section="testimonials">รีวิว</a></li>
@@ -343,7 +354,10 @@
       </div>
       
       <div class="footer-section">
-        <h3>บริการ</h3>
+        <h3>
+          <span class="section-title">บริการ</span>
+          <span class="toggle-icon">+</span>
+        </h3>
         <ul>
           <li>ฟิล์มรถยนต์</li>
           <li>ฟิล์มบ้าน-อาคาร</li>
@@ -353,7 +367,10 @@
       </div>
       
       <div class="footer-section">
-        <h3>ติดต่อ</h3>
+        <h3>
+          <span class="section-title">ติดต่อ</span>
+          <span class="toggle-icon">+</span>
+        </h3>
         <ul>
           <li>📞 <a href="tel:0901234567" style="color: inherit; text-decoration: none;">090-123-4567</a></li>
           <li>📧 info@yujinfilm.com</li>
@@ -407,6 +424,7 @@
   
   <!-- Your main script AFTER Firebase initialization -->
   <script src="main.js" defer></script>
+  <script src="chat.js" defer></script>
   <script src="analytics.js"></script>
 </body>
 </html>
