@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearShield Pro - Premium Window Film Solutions</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --deep-blue: #1e40af;
+            --light-blue: #eff6ff;
+            --accent-blue: #3b82f6;
+            --accent-orange: #f97316;
+            --accent-purple: #8b5cf6;
+            --accent-teal: #14b8a6;
+            --warm-orange: #fb923c;
+            --golden: #f59e0b;
+            --emerald: #10b981;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-500: #64748b;
+            --gray-700: #334155;
+            --gray-900: #0f172a;
+            --white: #ffffff;
+            --black: #000000;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
+            --shadow-sm: 0 1px 3px rgba(16, 24, 40, 0.1), 0 1px 2px rgba(16, 24, 40, 0.06);
+            --shadow-md: 0 4px 8px rgba(16, 24, 40, 0.03), 0 2px 4px rgba(16, 24, 40, 0.08);
+            --shadow-lg: 0 12px 16px rgba(16, 24, 40, 0.04), 0 4px 6px rgba(16, 24, 40, 0.10);
+            --shadow-xl: 0 20px 24px rgba(16, 24, 40, 0.04), 0 8px 8px rgba(16, 24, 40, 0.08);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-900);
+            background: var(--white);
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--gray-200);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-menu a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 20px;
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-cta:hover {
+            background: var(--deep-blue);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(249, 115, 22, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, #f8fafc 0%, #eff6ff 30%, #fef3e8 70%, #fdf2f8 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25px 25px, rgba(37, 99, 235, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75px 75px, rgba(249, 115, 22, 0.05) 1px, transparent 1px);
+            background-size: 100px 100px, 150px 150px;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 14px;
+            color: var(--gray-700);
+            font-weight: 500;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-xs);
+        }
+
+        .hero-title {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1.05;
+            color: var(--gray-900);
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+            text-shadow: 0 4px 8px rgba(37, 99, 235, 0.1);
+            position: relative;
+        }
+        
+        .hero-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-orange), var(--golden));
+            border-radius: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--gray-500);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            background: var(--deep-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--gray-900);
+            border: 1px solid var(--gray-300);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gray-50);
+            border-color: var(--gray-400);
+            transform: translateY(-1px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 8px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .ambassador-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            max-width: 380px;
+            margin: 0 auto;
+            transition: all 0.4s ease;
+        }
+        
+        .ambassador-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .ambassador-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange), var(--accent-purple));
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+        }
+
+        .ambassador-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-orange));
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            color: var(--white);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .ambassador-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 6px;
+        }
+
+        .ambassador-title {
+            font-size: 15px;
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .ambassador-description {
+            font-size: 13px;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gray-50);
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+
+        /* Product Categories */
+        .categories {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gray-900) 0%, var(--primary-blue) 50%, var(--accent-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            position: relative;
+            text-shadow: 0 4px 8px rgba(37, 99, 235, 0.1);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+        }
+
+        .category-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .category-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-4px);
+            border-color: var(--primary-blue);
+        }
+
+        .category-image {
+            height: 240px;
+            background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            color: var(--gray-500);
+            position: relative;
+        }
+
+        .category-overlay {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 8px 12px;
+            border-radius: var(--radius-md);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .category-content {
+            padding: 32px;
+        }
+
+        .category-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .category-description {
+            color: var(--gray-500);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .category-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .category-features li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 0;
+            font-size: 14px;
+            color: var(--gray-700);
+        }
+
+        .category-features li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* Customer Reviews */
+        .reviews {
+            padding: 100px 0;
+            background: var(--gray-50);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 32px;
+            margin-top: 80px;
+        }
+
+        .review-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .review-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .review-info {
+            flex: 1;
+        }
+
+        .review-name {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+
+        .review-service {
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        .review-rating {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 16px;
+        }
+
+        .star {
+            color: var(--warning);
+            font-size: 16px;
+        }
+
+        .review-text {
+            color: var(--gray-700);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .review-media {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .review-photo {
+            width: 80px;
+            height: 80px;
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-500);
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .review-photo:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Online Booking */
+        .booking {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .booking-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .booking-form {
+            background: var(--gray-50);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-orange);
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .booking-summary {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--gray-900);
+        }
+
+        /* Product Showcase */
+        .products {
+            padding: 100px 0;
+            background: var(--gray-50);
+        }
+
+        .products-filters {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+
+        .filter-btn {
+            padding: 12px 24px;
+            border: 1px solid var(--gray-300);
+            background: var(--white);
+            color: var(--gray-700);
+            border-radius: var(--radius-lg);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--gray-100), var(--gray-200));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: var(--gray-500);
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--success);
+            color: var(--white);
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .product-content {
+            padding: 24px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .product-description {
+            color: var(--gray-500);
+            font-size: 14px;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .product-features li {
+            font-size: 12px;
+            color: var(--gray-600);
+            padding: 2px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .product-features li::before {
+            content: '•';
+            color: var(--primary-blue);
+        }
+
+        /* Trust Section */
+        .trust {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .trust-item {
+            text-align: center;
+            padding: 32px;
+            background: var(--gray-50);
+            border-radius: var(--radius-xl);
+            transition: all 0.3s ease;
+        }
+
+        .trust-item:hover {
+            background: var(--white);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .trust-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: var(--white);
+            font-size: 32px;
+        }
+
+        .trust-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .trust-description {
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--gray-900) 0%, #1e293b 100%);
+            color: var(--white);
+            padding: 80px 0 40px;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange), var(--accent-purple), var(--accent-teal));
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: var(--gray-300);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-700);
+            padding-top: 32px;
+            text-align: center;
+            color: var(--gray-300);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gray-900);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content,
+            .booking-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                text-align: center;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .hero-title {
+                font-size: 40px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 32px;
+                z-index: 1001;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .categories-grid,
+            .reviews-grid,
+            .products-grid,
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .products-filters {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="logo">ClearShield Pro</a>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#booking">Book Now</a></li>
+                </ul>
+                <a href="#booking" class="nav-cta">Get Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text slide-in-left">
+                    <div class="hero-badge">
+                        <i class="fas fa-award"></i>
+                        Premium Window Film Specialists
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Crystal Clear Protection,<br>
+                        <span style="color: var(--primary-blue);">Professional Results</span>
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        Transform your vehicle, home, or business with premium window films. 
+                        Expert installation, lifetime warranties, and unmatched customer service.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#booking" class="btn btn-primary">
+                            <i class="fas fa-calendar"></i>
+                            Book Installation
+                        </a>
+                        <a href="#products" class="btn btn-secondary">
+                            <i class="fas fa-play"></i>
+                            View Gallery
+                        </a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">10K+</div>
+                            <div class="stat-label">Happy Customers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">99%</div>
+                            <div class="stat-label">Satisfaction Rate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual slide-in-right">
+                    <div class="ambassador-card">
+                        <div class="ambassador-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="ambassador-name">Michael Thompson</div>
+                        <div class="ambassador-title">Master Installer & Owner</div>
+                        <div class="ambassador-description">
+                            "Every installation is personally overseen to ensure perfection. 
+                            Your satisfaction is my commitment to excellence."
+                        </div>
+                        <div class="trust-badges">
+                            <div class="trust-badge">
+                                <i class="fas fa-certificate"></i>
+                                Certified Pro
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                Insured
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-medal"></i>
+                                15+ Years
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section id="services" class="categories">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Premium Services</h2>
+                <p class="section-subtitle">
+                    Professional window film installation for automotive, residential, and commercial applications. 
+                    On-site or in-store service available.
+                </p>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card fade-in">
+                    <div class="category-image">
+                        <i class="fas fa-car"></i>
+                        <div class="category-overlay">Most Popular</div>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-title">Automotive Films</h3>
+                        <p class="category-description">
+                            Premium automotive window tinting for all vehicle types. 
+                            UV protection, heat reduction, and enhanced privacy.
+                        </p>
+                        <ul class="category-features">
+                            <li>Ceramic & Carbon Films</li>
+                            <li>UV Protection 99%</li>
+                            <li>Heat Reduction up to 70%</li>
+                            <li>Lifetime Warranty</li>
+                            <li>Mobile Installation Available</li>
+                        </ul>
+                        <a href="#booking" class="btn btn-primary" style="width: 100%;">Book Service</a>
+                    </div>
+                </div>
+                
+                <div class="category-card fade-in">
+                    <div class="category-image">
+                        <i class="fas fa-home"></i>
+                        <div class="category-overlay">Energy Saving</div>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-title">Residential Films</h3>
+                        <p class="category-description">
+                            Transform your home with energy-efficient window films. 
+                            Reduce cooling costs and protect your interiors.
+                        </p>
+                        <ul class="category-features">
+                            <li>Energy Efficient Solutions</li>
+                            <li>Decorative & Privacy Films</li>
+                            <li>UV Protection for Furniture</li>
+                            <li>Reduces Energy Bills</li>
+                            <li>Professional Measurement</li>
+                        </ul>
+                        <a href="#booking" class="btn btn-primary" style="width: 100%;">Get Quote</a>
+                    </div>
+                </div>
+                
+                <div class="category-card fade-in">
+                    <div class="category-image">
+                        <i class="fas fa-building"></i>
+                        <div class="category-overlay">Commercial</div>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-title">Commercial Films</h3>
+                        <p class="category-description">
+                            Professional-grade films for offices, retail spaces, and commercial buildings. 
+                            Enhance comfort and reduce operating costs.
+                        </p>
+                        <ul class="category-features">
+                            <li>Large Scale Projects</li>
+                            <li>Security & Safety Films</li>
+                            <li>Branding & Advertising Films</li>
+                            <li>Energy Code Compliance</li>
+                            <li>Project Management</li>
+                        </ul>
+                        <a href="#booking" class="btn btn-primary" style="width: 100%;">Consult Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">
+                    Real reviews from real customers. See why thousands trust us with their window film needs.
+                </p>
+            </div>
+            
+            <div class="reviews-grid">
+                <div class="review-card fade-in">
+                    <div class="review-header">
+                        <div class="review-avatar">JS</div>
+                        <div class="review-info">
+                            <div class="review-name">James Sullivan</div>
+                            <div class="review-service">BMW X5 - Ceramic Tint</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="review-text">
+                        "Absolutely phenomenal work! Michael's attention to detail is incredible. 
+                        The ceramic tint on my BMW looks factory perfect, and the heat reduction 
+                        is amazing. Worth every penny!"
+                    </p>
+                    <div class="review-media">
+                        <div class="review-photo">📸</div>
+                        <div class="review-photo">📸</div>
+                        <div class="review-photo">▶️</div>
+                    </div>
+                </div>
+                
+                <div class="review-card fade-in">
+                    <div class="review-header">
+                        <div class="review-avatar">ER</div>
+                        <div class="review-info">
+                            <div class="review-name">Emily Rodriguez</div>
+                            <div class="review-service">Home Windows - Privacy Film</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="review-text">
+                        "Michael transformed our home office with privacy film. Professional, 
+                        punctual, and the results exceeded expectations. Our energy bills 
+                        have noticeably decreased too!"
+                    </p>
+                    <div class="review-media">
+                        <div class="review-photo">📸</div>
+                        <div class="review-photo">📸</div>
+                    </div>
+                </div>
+                
+                <div class="review-card fade-in">
+                    <div class="review-header">
+                        <div class="review-avatar">DW</div>
+                        <div class="review-info">
+                            <div class="review-name">David Wong</div>
+                            <div class="review-service">Tesla Model 3 - Full Tint</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="review-text">
+                        "Third car I've brought to Michael. Consistently perfect installations, 
+                        great communication, and stands behind his work 100%. 
+                        Highly recommend to anyone!"
+                    </p>
+                    <div class="review-media">
+                        <div class="review-photo">📸</div>
+                        <div class="review-photo">▶️</div>
+                    </div>
+                </div>
+                
+                <div class="review-card fade-in">
+                    <div class="review-header">
+                        <div class="review-avatar">SC</div>
+                        <div class="review-info">
+                            <div class="review-name">Sarah Chen</div>
+                            <div class="review-service">Office Building - Commercial Tint</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="review-text">
+                        "Managed our entire office building project flawlessly. 
+                        Professional team, on-time completion, and the energy savings 
+                        have been substantial. Excellent service!"
+                    </p>
+                    <div class="review-media">
+                        <div class="review-photo">📸</div>
+                        <div class="review-photo">📸</div>
+                        <div class="review-photo">📸</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Booking -->
+    <section id="booking" class="booking">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Book Your Installation</h2>
+                <p class="section-subtitle">
+                    Get a free quote and schedule your professional window film installation today.
+                </p>
+            </div>
+            
+            <div class="booking-container">
+                <div class="booking-form slide-in-left">
+                    <h3 style="margin-bottom: 24px; font-size: 24px;">Service Details</h3>
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label class="form-label">Service Type *</label>
+                            <select class="form-select" required>
+                                <option value="">Select Service</option>
+                                <option value="automotive">Automotive Tinting</option>
+                                <option value="residential">Residential Films</option>
+                                <option value="commercial">Commercial Installation</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Full Name *</label>
+                                <input type="text" class="form-input" required placeholder="Your full name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone Number *</label>
+                                <input type="tel" class="form-input" required placeholder="(555) 123-4567">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" placeholder="your@email.com">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Preferred Date</label>
+                                <input type="date" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Preferred Time</label>
+                                <select class="form-select">
+                                    <option value="">Any Time</option>
+                                    <option value="morning">Morning (8AM-12PM)</option>
+                                    <option value="afternoon">Afternoon (12PM-5PM)</option>
+                                    <option value="evening">Evening (5PM-8PM)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Service Location</label>
+                            <select class="form-select">
+                                <option value="shop">Bring to Shop</option>
+                                <option value="mobile">Mobile Service (On-Site)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Project Details</label>
+                            <textarea class="form-textarea" rows="4" placeholder="Tell us about your vehicle, home, or commercial project..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-calendar-check"></i>
+                            Request Quote & Schedule
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="booking-summary slide-in-right">
+                    <h3 style="margin-bottom: 24px; font-size: 24px;">Why Choose Us?</h3>
+                    
+                    <div style="margin-bottom: 32px;">
+                        <div class="summary-item">
+                            <span><i class="fas fa-award" style="color: var(--primary-blue); margin-right: 8px;"></i>Master Installer</span>
+                            <span>15+ Years</span>
+                        </div>
+                        <div class="summary-item">
+                            <span><i class="fas fa-shield-alt" style="color: var(--success); margin-right: 8px;"></i>Lifetime Warranty</span>
+                            <span>Included</span>
+                        </div>
+                        <div class="summary-item">
+                            <span><i class="fas fa-mobile-alt" style="color: var(--primary-blue); margin-right: 8px;"></i>Mobile Service</span>
+                            <span>Available</span>
+                        </div>
+                        <div class="summary-item">
+                            <span><i class="fas fa-star" style="color: var(--warning); margin-right: 8px;"></i>Customer Rating</span>
+                            <span>4.9/5 ★</span>
+                        </div>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, #eff6ff, #fef3e8); padding: 20px; border-radius: var(--radius-lg); margin-bottom: 24px; border: 1px solid rgba(37, 99, 235, 0.2);">
+                        <h4 style="background: linear-gradient(135deg, var(--accent-orange), var(--golden)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px;">
+                            <i class="fas fa-gift"></i> Limited Time Offer
+                        </h4>
+                        <p style="color: var(--gray-700); margin: 0;">
+                            Book this month and receive a <strong>FREE ceramic coating upgrade</strong> 
+                            on automotive installations (value $200).
+                        </p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #f8fafc, #eff6ff); border-radius: var(--radius-lg); border: 1px solid rgba(37, 99, 235, 0.2);">
+                        <div style="font-size: 32px; margin-bottom: 8px;">📞</div>
+                        <div style="font-weight: 600; margin-bottom: 4px;">Call for Immediate Service</div>
+                        <div style="font-size: 20px; background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700;">
+                            (555) 123-FILM
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section id="products" class="products">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Premium Film Products</h2>
+                <p class="section-subtitle">
+                    We use only the highest quality films from industry-leading manufacturers. 
+                    Every product comes with comprehensive warranties.
+                </p>
+            </div>
+            
+            <div class="products-filters">
+                <button class="filter-btn active" data-filter="all">All Products</button>
+                <button class="filter-btn" data-filter="automotive">Automotive</button>
+                <button class="filter-btn" data-filter="residential">Residential</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card fade-in" data-category="automotive">
+                    <div class="product-image">
+                        <i class="fas fa-car"></i>
+                        <div class="product-badge">Premium</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Ceramic Pro Automotive</h3>
+                        <p class="product-description">
+                            Premium ceramic window film with superior heat rejection and clarity.
+                        </p>
+                        <div class="product-price">$299 - $899</div>
+                        <ul class="product-features">
+                            <li>99% UV Protection</li>
+                            <li>70% Heat Reduction</li>
+                            <li>Lifetime Warranty</li>
+                            <li>Non-Reflective Finish</li>
+                        </ul>
+                        <button class="btn btn-primary" style="width: 100%;">Get Quote</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in" data-category="automotive">
+                    <div class="product-image">
+                        <i class="fas fa-shield-alt"></i>
+                        <div class="product-badge">Popular</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Carbon Series Auto</h3>
+                        <p class="product-description">
+                            High-performance carbon film offering excellent value and durability.
+                        </p>
+                        <div class="product-price">$199 - $599</div>
+                        <ul class="product-features">
+                            <li>95% UV Protection</li>
+                            <li>50% Heat Reduction</li>
+                            <li>10-Year Warranty</li>
+                            <li>Color Stable Technology</li>
+                        </ul>
+                        <button class="btn btn-primary" style="width: 100%;">Get Quote</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in" data-category="residential">
+                    <div class="product-image">
+                        <i class="fas fa-home"></i>
+                        <div class="product-badge">Energy Star</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Energy Saver Residential</h3>
+                        <p class="product-description">
+                            Reduce energy costs while maintaining natural light and view.
+                        </p>
+                        <div class="product-price">$8 - $15 /sq ft</div>
+                        <ul class="product-features">
+                            <li>Up to 30% Energy Savings</li>
+                            <li>99% UV Protection</li>
+                            <li>Lifetime Warranty</li>
+                            <li>Various Tint Options</li>
+                        </ul>
+                        <button class="btn btn-primary" style="width: 100%;">Get Quote</button>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in" data-category="commercial">
+                    <div class="product-image">
+                        <i class="fas fa-building"></i>
+                        <div class="product-badge">Commercial</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Security & Safety Film</h3>
+                        <p class="product-description">
+                            Heavy-duty films for security, safety, and energy efficiency.
+                        </p>
+                        <div class="product-price">$12 - $25 /sq ft</div>
+                        <ul class="product-features">
+                            <li>Shatter Protection</li>
+                            <li>Burglar Deterrent</li>
+                            <li>Energy Efficient</li>
+                            <li>Commercial Warranty</li>
+                        </ul>
+                        <button class="btn btn-primary" style="width: 100%;">Get Quote</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Certifications -->
+    <section class="trust">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Your Trust, Our Commitment</h2>
+                <p class="section-subtitle">
+                    Certified, insured, and committed to excellence. Here's what sets us apart.
+                </p>
+            </div>
+            
+            <div class="trust-grid">
+                <div class="trust-item fade-in">
+                    <div class="trust-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="trust-title">Certified Installation</h3>
+                    <p class="trust-description">
+                        Factory-certified installer with ongoing training from leading manufacturers. 
+                        Your installation meets the highest industry standards.
+                    </p>
+                </div>
+                
+                <div class="trust-item fade-in">
+                    <div class="trust-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="trust-title">Lifetime Warranties</h3>
+                    <p class="trust-description">
+                        Comprehensive warranties covering materials, workmanship, and performance. 
+                        Your investment is protected for years to come.
+                    </p>
+                </div>
+                
+                <div class="trust-item fade-in">
+                    <div class="trust-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="trust-title">After-Sale Support</h3>
+                    <p class="trust-description">
+                        Dedicated customer support and maintenance services. 
+                        We're here to help long after your installation is complete.
+                    </p>
+                </div>
+                
+                <div class="trust-item fade-in">
+                    <div class="trust-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="trust-title">Fully Insured</h3>
+                    <p class="trust-description">
+                        Complete liability and bonding coverage for your peace of mind. 
+                        Your property is protected throughout the entire process.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ClearShield Pro</h3>
+                    <p>Premium window film installation services for automotive, residential, and commercial applications. Quality you can see, protection you can trust.</p>
+                    <div style="margin-top: 20px;">
+                        <div style="margin-bottom: 8px;">
+                            <i class="fas fa-phone" style="margin-right: 8px;"></i>
+                            (555) 123-FILM
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                            info@clearshieldpro.com
+                        </div>
+                        <div>
+                            <i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>
+                            123 Professional Way, Suite 100
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">Automotive Tinting</a></li>
+                        <li><a href="#services">Residential Films</a></li>
+                        <li><a href="#services">Commercial Installation</a></li>
+                        <li><a href="#booking">Mobile Service</a></li>
+                        <li><a href="#booking">Free Consultation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#products">Ceramic Films</a></li>
+                        <li><a href="#products">Carbon Films</a></li>
+                        <li><a href="#products">Security Films</a></li>
+                        <li><a href="#products">Decorative Films</a></li>
+                        <li><a href="#products">Energy Efficient</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#reviews">Customer Reviews</a></li>
+                        <li><a href="#trust">Certifications</a></li>
+                        <li><a href="#trust">Warranties</a></li>
+                        <li><a href="#home">About Michael</a></li>
+                        <li><a href="#booking">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 ClearShield Pro. All rights reserved. | Licensed & Insured | BBB A+ Rating</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animation elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Product filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter products
+                const filter = this.getAttribute('data-filter');
+                document.querySelectorAll('.product-card').forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-check"></i> Quote Requested!';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    alert('Thank you! We\'ll contact you within 24 hours with your personalized quote and available appointment times.');
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(16, 24, 40, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Review photo/video click handlers
+        document.querySelectorAll('.review-photo').forEach(photo => {
+            photo.addEventListener('click', function() {
+                if (this.textContent === '▶️') {
+                    alert('Video player would open here in a real implementation');
+                } else {
+                    alert('Photo gallery would open here in a real implementation');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
