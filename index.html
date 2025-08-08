@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Yujin Film Solution | ฟิล์มกรองแสงรถยนต์และอาคารอันดับ 1</title>
   <meta name="description" content="ฟิล์มกรองแสงคุณภาพสูง กัน UV 99% บริการติดตั้งถึงบ้าน รับประกัน 7 ปี ราคาย่อมเยา">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
@@ -22,30 +22,47 @@
   <header class="header" id="header">
     <div class="nav-container">
       <div class="nav-left">
-        <!-- Hamburger Menu Button -->
-        <button class="hamburger" id="hamburgerMenu" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        
         <a href="#" class="logo">
           <img src="img/logo.png" alt="" class="logo-icon">
           <span>YuJin Film</span>
         </a>
       </div>
       
-      <nav>
-        <ul class="nav-menu" id="navMenu">
-          <li><a href="#problem" data-track="nav_click" data-section="problem">ปัญหา</a></li>
-          <li><a href="#solution" data-track="nav_click" data-section="solution">วิธีแก้</a></li>
-          <li><a href="#testimonials" data-track="nav_click" data-section="testimonials">รีวิว</a></li>
-          <li><a href="#contact" data-track="nav_click" data-section="contact">ติดต่อ</a></li>
-          <li><a href="booking.html" class="cta-button" data-track="header_booking_click">จองคิว</a></li>
-        </ul>
-      </nav>
+      <div class="nav-right">
+        <a href="tel:0838650007" class="mobile-phone-btn" data-track="header_phone_click">
+          <span class="phone-icon">📞</span>
+          <span class="phone-text">โทร</span>
+        </a>
+      </div>
     </div>
   </header>
+
+
+  <!-- Bottom Navigation for Mobile -->
+  <nav class="bottom-nav" id="bottomNav">
+    <div class="bottom-nav-items">
+      <a href="#problem" class="bottom-nav-item" data-track="bottom_nav_click" data-section="problem">
+        <div class="bottom-nav-icon">🔥</div>
+        <span>ปัญหา</span>
+      </a>
+      <a href="#solution" class="bottom-nav-item" data-track="bottom_nav_click" data-section="solution">
+        <div class="bottom-nav-icon">✨</div>
+        <span>วิธีแก้</span>
+      </a>
+      <a href="#testimonials" class="bottom-nav-item" data-track="bottom_nav_click" data-section="testimonials">
+        <div class="bottom-nav-icon">⭐</div>
+        <span>รีวิว</span>
+      </a>
+      <a href="#contact" class="bottom-nav-item" data-track="bottom_nav_click" data-section="contact">
+        <div class="bottom-nav-icon">📞</div>
+        <span>ติดต่อ</span>
+      </a>
+      <a href="booking.html" class="bottom-nav-item bottom-nav-cta" data-track="bottom_nav_booking_click">
+        <div class="bottom-nav-icon">📅</div>
+        <span>จอง</span>
+      </a>
+    </div>
+  </nav>
 
   <!-- Hero Section -->
   <section class="hero" id="hero">
@@ -115,25 +132,25 @@
     
     <div class="solution-grid">
       <div class="solution-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="solution-icon">❄️</div>
+        <div class="solution-icon">🌟</div>
         <h3>ลดอุณหภูมิ 8°C</h3>
         <p>เทคโนโลยี IR Rejection ลดความร้อนได้จริง ประหยัดน้ำมันได้ถึง 30%</p>
       </div>
       
       <div class="solution-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="solution-icon">🛡️</div>
+        <div class="solution-icon">✨</div>
         <h3>กัน UV 99.9%</h3>
         <p>ปกป้องผิวพรรณและสุขภาพ ลดความเสี่ยงโรคร้ายจากรังสี UV</p>
       </div>
       
       <div class="solution-card" data-aos="fade-up" data-aos-delay="300">
-        <div class="solution-icon">👁️</div>
+        <div class="solution-icon">🔍</div>
         <h3>วิสัยทัศน์ใสชัด</h3>
         <p>มองเห็นชัดเจนทั้งกลางวันและกลางคืน ไม่บดบังการมองเห็น</p>
       </div>
       
       <div class="solution-card" data-aos="fade-up" data-aos-delay="400">
-        <div class="solution-icon">💎</div>
+        <div class="solution-icon">💫</div>
         <h3>คุณภาพพรีเมียม</h3>
         <p>ไม่ลอก ไม่มัว ไม่พอง รับประกันคุณภาพนาน 7 ปีเต็ม</p>
       </div>

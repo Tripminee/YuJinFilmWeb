@@ -1,30 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // ===== MOBILE NAVIGATION =====
-  const hamburger = document.getElementById('hamburgerMenu');
-  const navMenu = document.getElementById('navMenu');
-  
-  if (hamburger && navMenu) {
-    hamburger.addEventListener('click', function() {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
-
-    // Close menu when clicking on links
-    navMenu.addEventListener('click', function(e) {
-      if (e.target.tagName === 'A') {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
+  // ===== BOTTOM NAVIGATION ACTIVE STATE =====
+  function updateActiveNavItem() {
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.bottom-nav-item[href^="#"]');
+    
+    let currentSection = '';
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (window.scrollY >= (sectionTop - 200)) {
+        currentSection = section.getAttribute('id');
       }
     });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
+    
+    navItems.forEach(item => {
+      item.classList.remove('active');
+      if (item.getAttribute('href') === `#${currentSection}`) {
+        item.classList.add('active');
       }
     });
   }
+  
+  // Update active nav item on scroll
+  window.addEventListener('scroll', updateActiveNavItem);
+  window.addEventListener('load', updateActiveNavItem);
 
   // ===== COLLAPSIBLE FOOTER =====
   function initFooterDropdowns() {

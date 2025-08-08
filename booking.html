@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>จองคิวติดฟิล์ม | Yujin Film Solution</title>
+  <meta name="description" content="จองคิวติดฟิล์มรถยนต์และอาคาร บริการถึงบ้าน ปรึกษาฟรี">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="booking.css">
+  
+  <!-- Google Maps API -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap"></script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="index.html" class="back-button" aria-label="กลับหน้าหลัก">
+          <span class="back-icon">←</span>
+          <span class="back-text">กลับ</span>
+        </a>
+        
+        <a href="index.html" class="logo">
+          <img src="img/logo.png" alt="" class="logo-icon">
+          <span>YuJin Film</span>
+        </a>
+      </div>
+      
+      <div class="nav-right">
+        <a href="tel:0838650007" class="mobile-phone-btn" data-track="header_phone_click">
+          <span class="phone-icon">📞</span>
+          <span class="phone-text">โทร</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Booking Hero Section -->
+  <section class="booking-hero">
+    <div class="booking-hero-content" data-aos="fade-up">
+      <h1>จองคิวติดฟิล์ม</h1>
+      <p>กรอกข้อมูลด้านล่าง เราจะติดต่อกลับภายใน 15 นาที<br>เพื่อยืนยันการจองและนัดเวลา</p>
+      <div class="hero-features">
+        <div class="feature-item">
+          <span class="feature-icon">🏠</span>
+          <span>บริการถึงบ้าน</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">💯</span>
+          <span>ปรึกษาฟรี</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">⚡</span>
+          <span>ตอบกลับเร็ว</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Form Section -->
+  <section class="booking-form-section">
+    <div class="container">
+      <form class="booking-form" id="bookingForm" data-aos="fade-up">
+        
+        <!-- Progress Indicator -->
+        <div class="progress-indicator">
+          <div class="progress-step active" data-step="1">
+            <div class="step-number">1</div>
+            <div class="step-label">ข้อมูลทั่วไป</div>
+          </div>
+          <div class="progress-step" data-step="2">
+            <div class="step-number">2</div>
+            <div class="step-label">วันเวลา</div>
+          </div>
+          <div class="progress-step" data-step="3">
+            <div class="step-number">3</div>
+            <div class="step-label">ที่อยู่</div>
+          </div>
+          <div class="progress-step" data-step="4">
+            <div class="step-number">4</div>
+            <div class="step-label">รายละเอียด</div>
+          </div>
+        </div>
+
+        <!-- Step 1: Personal Information -->
+        <div class="form-step active" data-step="1">
+          <div class="step-header">
+            <h2>ข้อมูลส่วนตัว</h2>
+            <p>กรอกข้อมูลเพื่อให้เราติดต่อกลับ</p>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="fullName">ชื่อ-นามสกุล *</label>
+              <input type="text" id="fullName" name="fullName" placeholder="กรอกชื่อ-นามสกุล" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">หมายเลขโทรศัพท์ *</label>
+              <input type="tel" id="phone" name="phone" placeholder="0xx-xxx-xxxx" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">อีเมล *</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="lineId">LINE ID (ถ้ามี)</label>
+              <input type="text" id="lineId" name="lineId" placeholder="LINE ID ของคุณ">
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Date & Time -->
+        <div class="form-step" data-step="2">
+          <div class="step-header">
+            <h2>เลือกวันและเวลา</h2>
+            <p>เลือกวันที่และช่วงเวลาที่สะดวก</p>
+          </div>
+
+          <div class="datetime-container">
+            <div class="form-group">
+              <label for="appointmentDate">วันที่ต้องการ *</label>
+              <input type="date" id="appointmentDate" name="appointmentDate" required>
+            </div>
+
+            <div class="form-group">
+              <label>ช่วงเวลาที่สะดวก *</label>
+              <div class="time-slots">
+                <label class="time-slot">
+                  <input type="radio" name="timeSlot" value="morning" required>
+                  <span class="slot-content">
+                    <span class="slot-icon">🌅</span>
+                    <span class="slot-text">เช้า<br><small>08:00-12:00</small></span>
+                  </span>
+                </label>
+                <label class="time-slot">
+                  <input type="radio" name="timeSlot" value="afternoon" required>
+                  <span class="slot-content">
+                    <span class="slot-icon">☀️</span>
+                    <span class="slot-text">บ่าย<br><small>12:00-16:00</small></span>
+                  </span>
+                </label>
+                <label class="time-slot">
+                  <input type="radio" name="timeSlot" value="evening" required>
+                  <span class="slot-content">
+                    <span class="slot-icon">🌆</span>
+                    <span class="slot-text">เย็น<br><small>16:00-19:00</small></span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="specificTime">เวลาเฉพาะ (ถ้ามี)</label>
+              <input type="time" id="specificTime" name="specificTime">
+              <small>ระบุเวลาเฉพาะหากต้องการ</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Location -->
+        <div class="form-step" data-step="3">
+          <div class="step-header">
+            <h2>ที่อยู่สำหรับบริการ</h2>
+            <p>ระบุที่อยู่หรือปักหมุดบนแผนที่</p>
+          </div>
+
+          <div class="location-container">
+            <div class="form-group">
+              <label for="address">ที่อยู่ *</label>
+              <textarea id="address" name="address" rows="3" placeholder="เลขที่ ซอย ถนน แขวง เขต จังหวัด รหัสไปรษณีย์" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="locationSearch">ค้นหาตำแหน่ง</label>
+              <input type="text" id="locationSearch" placeholder="ค้นหาสถานที่หรือที่อยู่">
+            </div>
+
+            <!-- Google Maps Container -->
+            <div class="map-container">
+              <div id="map" style="width: 100%; height: 300px; border-radius: 12px;"></div>
+              <p class="map-instruction">📍 คลิกบนแผนที่เพื่อปักหมุดตำแหน่งที่ต้องการ</p>
+            </div>
+
+            <div class="form-group">
+              <label for="locationNote">หมายเหตุตำแหน่ง</label>
+              <textarea id="locationNote" name="locationNote" rows="2" placeholder="รายละเอียดเพิ่มเติม เช่น จุดสังเกต วิธีเดินทาง"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Vehicle & Service Details -->
+        <div class="form-step" data-step="4">
+          <div class="step-header">
+            <h2>รายละเอียดรถและบริการ</h2>
+            <p>ข้อมูลรถยนต์และบริการที่ต้องการ</p>
+          </div>
+
+          <div class="service-container">
+            <div class="form-group">
+              <label for="serviceType">ประเภทบริการ *</label>
+              <select id="serviceType" name="serviceType" required>
+                <option value="">เลือกประเภทบริการ</option>
+                <option value="car-film">ฟิล์มรถยนต์</option>
+                <option value="building-film">ฟิล์มอาคาร</option>
+                <option value="both">ทั้งรถและอาคาร</option>
+              </select>
+            </div>
+
+            <div class="car-details" id="carDetails">
+              <div class="form-group">
+                <label for="carBrand">ยี่ห้อรถ *</label>
+                <select id="carBrand" name="carBrand">
+                  <option value="">เลือกยี่ห้อ</option>
+                  <option value="toyota">Toyota</option>
+                  <option value="honda">Honda</option>
+                  <option value="nissan">Nissan</option>
+                  <option value="mazda">Mazda</option>
+                  <option value="mitsubishi">Mitsubishi</option>
+                  <option value="isuzu">Isuzu</option>
+                  <option value="bmw">BMW</option>
+                  <option value="mercedes">Mercedes-Benz</option>
+                  <option value="audi">Audi</option>
+                  <option value="lexus">Lexus</option>
+                  <option value="volvo">Volvo</option>
+                  <option value="other">อื่นๆ</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="carModel">รุ่นรถ *</label>
+                <input type="text" id="carModel" name="carModel" placeholder="เช่น Camry, Civic, CX-5">
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="carYear">ปีรถ</label>
+                  <select id="carYear" name="carYear">
+                    <option value="">เลือกปี</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="carColor">สีรถ</label>
+                  <input type="text" id="carColor" name="carColor" placeholder="เช่น ขาว เงิน ดำ">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="licensePlate">ป้ายทะเบียน</label>
+                <input type="text" id="licensePlate" name="licensePlate" placeholder="เช่น กท 1234">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="filmType">ประเภทฟิล์มที่สนใจ</label>
+              <div class="film-options">
+                <label class="film-option">
+                  <input type="checkbox" name="filmType" value="ceramic">
+                  <span class="option-content">
+                    <span class="option-title">Ceramic Film</span>
+                    <span class="option-desc">กันร้อนดี ใส ไม่เฟด</span>
+                  </span>
+                </label>
+                <label class="film-option">
+                  <input type="checkbox" name="filmType" value="carbon">
+                  <span class="option-content">
+                    <span class="option-title">Carbon Film</span>
+                    <span class="option-desc">กันร้อนดี ราคาประหยัด</span>
+                  </span>
+                </label>
+                <label class="film-option">
+                  <input type="checkbox" name="filmType" value="premium">
+                  <span class="option-content">
+                    <span class="option-title">Premium Film</span>
+                    <span class="option-desc">คุณภาพสูงสุด</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="budget">งบประมาณโดยประมาณ</label>
+              <select id="budget" name="budget">
+                <option value="">เลือกงบประมาณ</option>
+                <option value="under-10000">ต่ำกว่า 10,000 บาท</option>
+                <option value="10000-20000">10,000 - 20,000 บาท</option>
+                <option value="20000-30000">20,000 - 30,000 บาท</option>
+                <option value="over-30000">มากกว่า 30,000 บาท</option>
+                <option value="flexible">ยืดหยุ่นได้</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="additionalNotes">ข้อมูลเพิ่มเติม</label>
+              <textarea id="additionalNotes" name="additionalNotes" rows="3" placeholder="รายละเอียดเพิ่มเติม คำถาม หรือความต้องการพิเศษ"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Navigation -->
+        <div class="form-navigation">
+          <button type="button" class="btn-secondary" id="prevBtn" style="display: none;">
+            <span class="btn-icon">←</span>
+            <span>ย้อนกลับ</span>
+          </button>
+          
+          <button type="button" class="btn-primary" id="nextBtn">
+            <span>ถัดไป</span>
+            <span class="btn-icon">→</span>
+          </button>
+          
+          <button type="submit" class="btn-submit" id="submitBtn" style="display: none;">
+            <span class="btn-text">ส่งการจอง</span>
+            <span class="btn-icon">✓</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Booking Summary -->
+      <div class="booking-summary" data-aos="fade-up" data-aos-delay="200">
+        <h3>ทำไมต้องเลือกเรา?</h3>
+        <div class="summary-features">
+          <div class="feature">
+            <span class="feature-icon">🏆</span>
+            <div class="feature-content">
+              <h4>ประสบการณ์ 10+ ปี</h4>
+              <p>ช่างมืออาชีพ ติดตั้งแล้วกว่า 5,000 คัน</p>
+            </div>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">✨</span>
+            <div class="feature-content">
+              <h4>คุณภาพระดับโลก</h4>
+              <p>ฟิล์มนำเข้า รับประกาน 7 ปีเต็ม</p>
+            </div>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">🚚</span>
+            <div class="feature-content">
+              <h4>บริการถึงบ้าน</h4>
+              <p>ฟรีค่าเดินทาง ติดตั้งที่บ้านคุณ</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <div class="success-animation">
+        <div class="checkmark">✓</div>
+      </div>
+      <h3>จองสำเร็จ!</h3>
+      <p>เราได้รับข้อมูลการจองของคุณแล้ว<br>จะติดต่อกลับภายใน 15 นาที</p>
+      <div class="booking-ref">
+        <span>เลขอ้างอิง: <strong id="bookingRef"></strong></span>
+      </div>
+      <button onclick="closeSuccessModal()" class="btn-primary">
+        ตกลง
+      </button>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation for Mobile -->
+  <nav class="bottom-nav">
+    <div class="bottom-nav-items">
+      <a href="index.html#problem" class="bottom-nav-item">
+        <div class="bottom-nav-icon">🔥</div>
+        <span>ปัญหา</span>
+      </a>
+      <a href="index.html#solution" class="bottom-nav-item">
+        <div class="bottom-nav-icon">✨</div>
+        <span>วิธีแก้</span>
+      </a>
+      <a href="index.html#testimonials" class="bottom-nav-item">
+        <div class="bottom-nav-icon">⭐</div>
+        <span>รีวิว</span>
+      </a>
+      <a href="index.html#contact" class="bottom-nav-item">
+        <div class="bottom-nav-icon">📞</div>
+        <span>ติดต่อ</span>
+      </a>
+      <a href="booking.html" class="bottom-nav-item bottom-nav-cta active">
+        <div class="bottom-nav-icon">📅</div>
+        <span>จอง</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Chat Widget -->
+  <div class="chat-widget">
+    <button class="chat-button" onclick="openChat()" data-track="chat_open">
+      <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+      </svg>
+    </button>
+  </div>
+
+  <script src="main.js"></script>
+  <script src="booking.js"></script>
+  <script src="analytics.js"></script>
+</body>
+</html>
