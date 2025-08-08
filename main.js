@@ -27,18 +27,43 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // ===== COLLAPSIBLE FOOTER =====
-  const footerSections = document.querySelectorAll('.footer-section');
-  footerSections.forEach(section => {
-    const header = section.querySelector('h3');
-    if (header && !section.classList.contains('footer-brand')) {
-      // Skip social links section (last child)
-      if (section === section.parentNode.lastElementChild) return;
+  function initFooterDropdowns() {
+    const footerSections = document.querySelectorAll('.footer-section');
+    footerSections.forEach(section => {
+      const header = section.querySelector('h3');
+      const toggleIcon = section.querySelector('.toggle-icon');
       
-      header.addEventListener('click', function() {
-        section.classList.toggle('active');
-      });
-    }
-  });
+      // Only add click handler for sections with toggle icons (not footer-brand or social links)
+      if (header && toggleIcon && !section.classList.contains('footer-brand')) {
+        // Skip social links section (last child)
+        if (section === section.parentNode.lastElementChild) return;
+        
+        header.addEventListener('click', function() {
+          const isActive = section.classList.contains('active');
+          
+          // Close other sections on mobile
+          if (window.innerWidth <= 768) {
+            footerSections.forEach(otherSection => {
+              if (otherSection !== section && otherSection.querySelector('.toggle-icon')) {
+                otherSection.classList.remove('active');
+                const otherIcon = otherSection.querySelector('.toggle-icon');
+                if (otherIcon) otherIcon.textContent = '+';
+              }
+            });
+          }
+          
+          // Toggle current section
+          section.classList.toggle('active');
+          if (toggleIcon) {
+            toggleIcon.textContent = isActive ? '+' : '−';
+          }
+        });
+      }
+    });
+  }
+  
+  // Initialize footer dropdowns
+  initFooterDropdowns();
   // ===== USER ID MANAGEMENT =====
   function getUserId() {
     let userId = localStorage.getItem('yujin_user_id');
