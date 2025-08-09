@@ -1,3 +1,33 @@
+// ===== CONTACT DROPDOWN =====
+function toggleContactDropdown() {
+  const dropdown = document.getElementById('contactDropdown');
+  const isVisible = dropdown.classList.contains('show');
+  
+  if (isVisible) {
+    dropdown.classList.remove('show');
+  } else {
+    dropdown.classList.add('show');
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function closeDropdown(e) {
+      if (!e.target.closest('.contact-dropdown')) {
+        dropdown.classList.remove('show');
+        document.removeEventListener('click', closeDropdown);
+      }
+    });
+  }
+}
+
+// Close dropdown on escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const dropdown = document.getElementById('contactDropdown');
+    if (dropdown && dropdown.classList.contains('show')) {
+      dropdown.classList.remove('show');
+    }
+  }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
   // ===== BOTTOM NAVIGATION ACTIVE STATE =====
   function updateActiveNavItem() {
@@ -606,9 +636,6 @@ function closeSuccessModal() {
   }
 }
 
-function openChat() {
-  window.open('https://line.me/ti/p/@yujinfilm', '_blank');
-}
 
 // ===== SMOOTH SCROLLING =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -626,4 +653,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Export global functions
 window.closeSuccessModal = closeSuccessModal;
-window.openChat = openChat;

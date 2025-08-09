@@ -2,411 +2,1056 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>จองคิวติดฟิล์ม | Yujin Film Solution</title>
-  <meta name="description" content="จองคิวติดฟิล์มรถยนต์และอาคาร บริการถึงบ้าน ปรึกษาฟรี">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <link rel="stylesheet" href="stylesheet.css">
-  <link rel="stylesheet" href="booking.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <title>จองคิวติดฟิล์ม | YuJin Film Solution</title>
+  <meta name="description" content="จองคิวติดตั้งฟิล์มกรองแสงรถยนต์ บริการถึงบ้าน สะดวก รวดเร็ว">
   
-  <!-- Google Maps API -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap"></script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Flatpickr for Date Picker -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+  
+  <!-- Booking Styles -->
+  <link rel="stylesheet" href="booking-styles.css">
 </head>
-
 <body>
-  <!-- Header -->
-  <header class="header" id="header">
-    <div class="nav-container">
-      <div class="nav-left">
-        <a href="index.html" class="back-button" aria-label="กลับหน้าหลัก">
-          <span class="back-icon">←</span>
-          <span class="back-text">กลับ</span>
-        </a>
-        
-        <a href="index.html" class="logo">
-          <img src="img/logo.png" alt="" class="logo-icon">
-          <span>YuJin Film</span>
-        </a>
-      </div>
-      
-      <div class="nav-right">
-        <a href="tel:0838650007" class="mobile-phone-btn" data-track="header_phone_click">
-          <span class="phone-icon">📞</span>
-          <span class="phone-text">โทร</span>
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Booking Hero Section -->
-  <section class="booking-hero">
-    <div class="booking-hero-content" data-aos="fade-up">
+  <div class="booking-container">
+    <!-- Header -->
+    <div class="booking-header">
+      <button class="back-btn" onclick="window.location.href='index.html'">
+        <i class="fas fa-arrow-left"></i>
+      </button>
       <h1>จองคิวติดฟิล์ม</h1>
-      <p>กรอกข้อมูลด้านล่าง เราจะติดต่อกลับภายใน 15 นาที<br>เพื่อยืนยันการจองและนัดเวลา</p>
-      <div class="hero-features">
-        <div class="feature-item">
-          <span class="feature-icon">🏠</span>
-          <span>บริการถึงบ้าน</span>
-        </div>
-        <div class="feature-item">
-          <span class="feature-icon">💯</span>
-          <span>ปรึกษาฟรี</span>
-        </div>
-        <div class="feature-item">
-          <span class="feature-icon">⚡</span>
-          <span>ตอบกลับเร็ว</span>
-        </div>
+      <p>บริการติดตั้งถึงบ้าน สะดวก รวดเร็ว</p>
+    </div>
+
+    <!-- Progress Steps -->
+    <div class="progress-steps">
+      <div class="step active" data-step="1">
+        <div class="step-circle">1</div>
+        <div class="step-label">บริการ</div>
+      </div>
+      <div class="step" data-step="2">
+        <div class="step-circle">2</div>
+        <div class="step-label">วันเวลา</div>
+      </div>
+      <div class="step" data-step="3">
+        <div class="step-circle">3</div>
+        <div class="step-label">ข้อมูล</div>
+      </div>
+      <div class="step" data-step="4">
+        <div class="step-circle">4</div>
+        <div class="step-label">ยืนยัน</div>
       </div>
     </div>
-  </section>
 
-  <!-- Booking Form Section -->
-  <section class="booking-form-section">
-    <div class="container">
-      <form class="booking-form" id="bookingForm" data-aos="fade-up">
-        
-        <!-- Progress Indicator -->
-        <div class="progress-indicator">
-          <div class="progress-step active" data-step="1">
-            <div class="step-number">1</div>
-            <div class="step-label">ข้อมูลทั่วไป</div>
-          </div>
-          <div class="progress-step" data-step="2">
-            <div class="step-number">2</div>
-            <div class="step-label">วันเวลา</div>
-          </div>
-          <div class="progress-step" data-step="3">
-            <div class="step-number">3</div>
-            <div class="step-label">ที่อยู่</div>
-          </div>
-          <div class="progress-step" data-step="4">
-            <div class="step-number">4</div>
-            <div class="step-label">รายละเอียด</div>
-          </div>
-        </div>
-
-        <!-- Step 1: Personal Information -->
-        <div class="form-step active" data-step="1">
-          <div class="step-header">
-            <h2>ข้อมูลส่วนตัว</h2>
-            <p>กรอกข้อมูลเพื่อให้เราติดต่อกลับ</p>
-          </div>
-
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="fullName">ชื่อ-นามสกุล *</label>
-              <input type="text" id="fullName" name="fullName" placeholder="กรอกชื่อ-นามสกุล" required>
-            </div>
-
-            <div class="form-group">
-              <label for="phone">หมายเลขโทรศัพท์ *</label>
-              <input type="tel" id="phone" name="phone" placeholder="0xx-xxx-xxxx" required>
-            </div>
-
-            <div class="form-group">
-              <label for="email">อีเมล *</label>
-              <input type="email" id="email" name="email" placeholder="your@email.com" required>
-            </div>
-
-            <div class="form-group">
-              <label for="lineId">LINE ID (ถ้ามี)</label>
-              <input type="text" id="lineId" name="lineId" placeholder="LINE ID ของคุณ">
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 2: Date & Time -->
-        <div class="form-step" data-step="2">
-          <div class="step-header">
-            <h2>เลือกวันและเวลา</h2>
-            <p>เลือกวันที่และช่วงเวลาที่สะดวก</p>
-          </div>
-
-          <div class="datetime-container">
-            <div class="form-group">
-              <label for="appointmentDate">วันที่ต้องการ *</label>
-              <input type="date" id="appointmentDate" name="appointmentDate" required>
-            </div>
-
-            <div class="form-group">
-              <label>ช่วงเวลาที่สะดวก *</label>
-              <div class="time-slots">
-                <label class="time-slot">
-                  <input type="radio" name="timeSlot" value="morning" required>
-                  <span class="slot-content">
-                    <span class="slot-icon">🌅</span>
-                    <span class="slot-text">เช้า<br><small>08:00-12:00</small></span>
-                  </span>
-                </label>
-                <label class="time-slot">
-                  <input type="radio" name="timeSlot" value="afternoon" required>
-                  <span class="slot-content">
-                    <span class="slot-icon">☀️</span>
-                    <span class="slot-text">บ่าย<br><small>12:00-16:00</small></span>
-                  </span>
-                </label>
-                <label class="time-slot">
-                  <input type="radio" name="timeSlot" value="evening" required>
-                  <span class="slot-content">
-                    <span class="slot-icon">🌆</span>
-                    <span class="slot-text">เย็น<br><small>16:00-19:00</small></span>
-                  </span>
-                </label>
+    <!-- Form -->
+    <form id="bookingForm">
+      <!-- Step 1: Service Selection -->
+      <div class="form-section active" data-section="1">
+        <div class="form-card">
+          <h2 class="section-title">
+            <i class="fas fa-car"></i>
+            เลือกประเภทบริการ
+          </h2>
+          
+          <div class="form-group">
+            <label class="form-label">ประเภทบริการ <span class="required">*</span></label>
+            <div class="service-options">
+              <div class="service-option" data-service="car">
+                <div class="service-name">ฟิล์มรถยนต์</div>
+                <div class="service-desc">ติดฟิล์มกรองแสงรถยนต์ทุกรุ่น</div>
+              </div>
+              <div class="service-option" data-service="building">
+                <div class="service-name">ฟิล์มบ้าน/อาคาร</div>
+                <div class="service-desc">ติดฟิล์มกระจกบ้านและอาคาร</div>
               </div>
             </div>
+            <div class="error-message">กรุณาเลือกประเภทบริการ</div>
+          </div>
 
-            <div class="form-group">
-              <label for="specificTime">เวลาเฉพาะ (ถ้ามี)</label>
-              <input type="time" id="specificTime" name="specificTime">
-              <small>ระบุเวลาเฉพาะหากต้องการ</small>
+          <div class="form-group" id="carSection" style="display: none;">
+            <label class="form-label">ยี่ห้อรถ <span class="required">*</span></label>
+            <div class="car-brands">
+              <div class="car-brand" data-brand="Toyota">Toyota</div>
+              <div class="car-brand" data-brand="Honda">Honda</div>
+              <div class="car-brand" data-brand="Mazda">Mazda</div>
+              <div class="car-brand" data-brand="Nissan">Nissan</div>
+              <div class="car-brand" data-brand="BMW">BMW</div>
+              <div class="car-brand" data-brand="Mercedes">Mercedes</div>
+              <div class="car-brand" data-brand="Tesla">Tesla</div>
+              <div class="car-brand" data-brand="BYD">BYD</div>
+              <div class="car-brand" data-brand="MG">MG</div>
+              <div class="car-brand" data-brand="GWM">GWM</div>
+              <div class="car-brand" data-brand="Neta">Neta</div>
+              <div class="car-brand" data-brand="Other">อื่นๆ</div>
+            </div>
+            
+            <!-- Custom brand input for "Other" option -->
+            <div class="form-group" id="customBrandSection" style="display: none;">
+              <label class="form-label">ระบุยี่ห้อรถ <span class="required">*</span></label>
+              <input type="text" class="form-input" id="customBrand" placeholder="กรอกยี่ห้อรถ">
+              <div class="error-message">กรุณาระบุยี่ห้อรถ</div>
+            </div>
+            
+            <label class="form-label" style="margin-top: 16px;">รุ่นรถ <span class="required">*</span></label>
+            <input type="text" class="form-input" id="carModel" placeholder="เช่น Civic, Camry, Model 3">
+            <div class="error-message">กรุณากรอกรุ่นรถ</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">เบอร์ฟิล์ม <span class="required">*</span></label>
+            <div class="service-options">
+              <div class="service-option" data-film="40">
+                <div class="service-name">40%</div>
+                <div class="service-desc">กรองแสง 60% เหมาะกับกระจกด้านหน้า</div>
+              </div>
+              <div class="service-option" data-film="60">
+                <div class="service-name">60%</div>
+                <div class="service-desc">กรองแสง 40% ความเข้มปานกลาง</div>
+              </div>
+              <div class="service-option" data-film="80">
+                <div class="service-name">80%</div>
+                <div class="service-desc">กรองแสง 20% เข้มเหมาะกับด้านหลัง</div>
+              </div>
+            </div>
+            <div class="error-message">กรุณาเลือกเบอร์ฟิล์ม</div>
+          </div>
+
+          <!-- Free Services Section -->
+          <div class="form-group">
+            <h3 class="free-services-title">
+              <i class="fas fa-gift"></i>
+              บริการฟรี
+            </h3>
+            <div class="free-services-list">
+              <div class="free-service-item">
+                <div class="service-check">✓</div>
+                <div class="service-text">ลอกฟิล์มเก่า</div>
+              </div>
+              <div class="free-service-item">
+                <div class="service-check">✓</div>
+                <div class="service-text">บริการหลังการขาย</div>
+              </div>
+              <div class="free-service-item">
+                <div class="service-check">✓</div>
+                <div class="service-text">รับประกันทุกฟิล์ม ทุกยี่ห้อ</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">บริการเสริม</label>
+            <div class="addon-list">
+              <div class="addon-item" data-addon="insurance" data-price="2500">
+                <div class="addon-checkbox"></div>
+                <div class="addon-info">
+                  <div class="addon-name">ต่อประกันรถยนต์ราคาสุดคุ้ม</div>
+                  <div class="addon-price">เริ่มต้น 2,500 บาท</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Step 3: Location -->
-        <div class="form-step" data-step="3">
-          <div class="step-header">
-            <h2>ที่อยู่สำหรับบริการ</h2>
-            <p>ระบุที่อยู่หรือปักหมุดบนแผนที่</p>
+      <!-- Step 2: Date & Time -->
+      <div class="form-section" data-section="2">
+        <div class="form-card">
+          <h2 class="section-title">
+            <i class="fas fa-calendar"></i>
+            เลือกวันและเวลา
+          </h2>
+          
+          <div class="form-group">
+            <label class="form-label">เลือกวันที่ <span class="required">*</span></label>
+            <div class="calendar-header">
+              <div class="month-year" id="currentMonth">มกราคม 2025</div>
+              <div class="calendar-nav">
+                <button type="button" onclick="changeMonth(-1)">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button type="button" onclick="changeMonth(1)">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+            <div class="calendar-grid" id="calendarGrid">
+              <!-- Calendar will be generated here -->
+            </div>
+            <input type="hidden" id="selectedDate" name="date">
+            <div class="error-message">กรุณาเลือกวันที่</div>
           </div>
 
-          <div class="location-container">
-            <div class="form-group">
-              <label for="address">ที่อยู่ *</label>
-              <textarea id="address" name="address" rows="3" placeholder="เลขที่ ซอย ถนน แขวง เขต จังหวัด รหัสไปรษณีย์" required></textarea>
+          <div class="form-group">
+            <label class="form-label">เลือกเวลา <span class="required">*</span></label>
+            <div class="time-slots">
+              <div class="time-slot" data-time="07:00">
+                <div class="slot-time">07:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="08:00">
+                <div class="slot-time">08:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="09:00">
+                <div class="slot-time">09:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="10:00">
+                <div class="slot-time">10:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="11:00">
+                <div class="slot-time">11:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="13:00">
+                <div class="slot-time">13:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="14:00">
+                <div class="slot-time">14:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="15:00">
+                <div class="slot-time">15:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="16:00">
+                <div class="slot-time">16:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="17:00">
+                <div class="slot-time">17:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
             </div>
+            <input type="hidden" id="selectedTime" name="time">
+            <div class="error-message">กรุณาเลือกเวลา</div>
+          </div>
+        </div>
+      </div>
 
-            <div class="form-group">
-              <label for="locationSearch">ค้นหาตำแหน่ง</label>
-              <input type="text" id="locationSearch" placeholder="ค้นหาสถานที่หรือที่อยู่">
-            </div>
+      <!-- Step 3: Customer Information -->
+      <div class="form-section" data-section="3">
+        <div class="form-card">
+          <h2 class="section-title">
+            <i class="fas fa-user"></i>
+            ข้อมูลการติดต่อ
+          </h2>
+          
+          <div class="form-group">
+            <label class="form-label">ชื่อ-นามสกุล <span class="required">*</span></label>
+            <input type="text" class="form-input" id="customerName" name="name" placeholder="กรอกชื่อ-นามสกุล">
+            <div class="error-message">กรุณากรอกชื่อ-นามสกุล</div>
+          </div>
 
-            <!-- Google Maps Container -->
+          <div class="form-group">
+            <label class="form-label">เบอร์โทรศัพท์ <span class="required">*</span></label>
+            <input type="tel" class="form-input" id="customerPhone" name="phone" placeholder="08x-xxx-xxxx" maxlength="10">
+            <div class="error-message">กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">อีเมล</label>
+            <input type="email" class="form-input" id="customerEmail" name="email" placeholder="your@email.com">
+            <div class="error-message">รูปแบบอีเมลไม่ถูกต้อง</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Line ID</label>
+            <input type="text" class="form-input" id="customerLine" name="line" placeholder="Line ID (ถ้ามี)">
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h2 class="section-title">
+            <i class="fas fa-map-marker-alt"></i>
+            สถานที่ติดตั้ง
+          </h2>
+          
+          <div class="form-group">
+            <label class="form-label">ปักหมุดตำแหน่ง <span class="required">*</span></label>
             <div class="map-container">
-              <div id="map" style="width: 100%; height: 300px; border-radius: 12px;"></div>
-              <p class="map-instruction">📍 คลิกบนแผนที่เพื่อปักหมุดตำแหน่งที่ต้องการ</p>
+              <div class="map-search">
+                <input type="text" id="searchAddress" placeholder="ค้นหาสถานที่หรือที่อยู่">
+              </div>
+              <div id="map"></div>
+              <button type="button" class="current-location-btn" onclick="getCurrentLocation()">
+                <i class="fas fa-location-crosshairs"></i>
+              </button>
             </div>
+            <input type="hidden" id="latitude" name="latitude">
+            <input type="hidden" id="longitude" name="longitude">
+            
+            <!-- LatLong Display -->
+            <div class="form-group" id="latLongDisplay" style="display: none;">
+              <label class="form-label">พิกัด (LatLng)</label>
+              <input type="text" class="form-input" id="latLongText" placeholder="ยังไม่ได้ปักหมุด" readonly>
+            </div>
+            
+            <div class="error-message">กรุณาปักหมุดตำแหน่งบนแผนที่</div>
+          </div>
 
-            <div class="form-group">
-              <label for="locationNote">หมายเหตุตำแหน่ง</label>
-              <textarea id="locationNote" name="locationNote" rows="2" placeholder="รายละเอียดเพิ่มเติม เช่น จุดสังเกต วิธีเดินทาง"></textarea>
-            </div>
+          <div class="form-group">
+            <label class="form-label">รายละเอียดที่อยู่เพิ่มเติม</label>
+            <input type="text" class="form-input" id="addressDetail" name="addressDetail" placeholder="เช่น บ้านเลขที่ ซอย หมู่บ้าน">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">หมายเหตุ</label>
+            <input type="text" class="form-input" id="customerNote" name="note" placeholder="ข้อมูลเพิ่มเติม (ถ้ามี)">
           </div>
         </div>
+      </div>
 
-        <!-- Step 4: Vehicle & Service Details -->
-        <div class="form-step" data-step="4">
-          <div class="step-header">
-            <h2>รายละเอียดรถและบริการ</h2>
-            <p>ข้อมูลรถยนต์และบริการที่ต้องการ</p>
-          </div>
-
-          <div class="service-container">
-            <div class="form-group">
-              <label for="serviceType">ประเภทบริการ *</label>
-              <select id="serviceType" name="serviceType" required>
-                <option value="">เลือกประเภทบริการ</option>
-                <option value="car-film">ฟิล์มรถยนต์</option>
-                <option value="building-film">ฟิล์มอาคาร</option>
-                <option value="both">ทั้งรถและอาคาร</option>
-              </select>
-            </div>
-
-            <div class="car-details" id="carDetails">
-              <div class="form-group">
-                <label for="carBrand">ยี่ห้อรถ *</label>
-                <select id="carBrand" name="carBrand">
-                  <option value="">เลือกยี่ห้อ</option>
-                  <option value="toyota">Toyota</option>
-                  <option value="honda">Honda</option>
-                  <option value="nissan">Nissan</option>
-                  <option value="mazda">Mazda</option>
-                  <option value="mitsubishi">Mitsubishi</option>
-                  <option value="isuzu">Isuzu</option>
-                  <option value="bmw">BMW</option>
-                  <option value="mercedes">Mercedes-Benz</option>
-                  <option value="audi">Audi</option>
-                  <option value="lexus">Lexus</option>
-                  <option value="volvo">Volvo</option>
-                  <option value="other">อื่นๆ</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="carModel">รุ่นรถ *</label>
-                <input type="text" id="carModel" name="carModel" placeholder="เช่น Camry, Civic, CX-5">
-              </div>
-
-              <div class="form-grid">
-                <div class="form-group">
-                  <label for="carYear">ปีรถ</label>
-                  <select id="carYear" name="carYear">
-                    <option value="">เลือกปี</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="carColor">สีรถ</label>
-                  <input type="text" id="carColor" name="carColor" placeholder="เช่น ขาว เงิน ดำ">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="licensePlate">ป้ายทะเบียน</label>
-                <input type="text" id="licensePlate" name="licensePlate" placeholder="เช่น กท 1234">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="filmType">ประเภทฟิล์มที่สนใจ</label>
-              <div class="film-options">
-                <label class="film-option">
-                  <input type="checkbox" name="filmType" value="ceramic">
-                  <span class="option-content">
-                    <span class="option-title">Ceramic Film</span>
-                    <span class="option-desc">กันร้อนดี ใส ไม่เฟด</span>
-                  </span>
-                </label>
-                <label class="film-option">
-                  <input type="checkbox" name="filmType" value="carbon">
-                  <span class="option-content">
-                    <span class="option-title">Carbon Film</span>
-                    <span class="option-desc">กันร้อนดี ราคาประหยัด</span>
-                  </span>
-                </label>
-                <label class="film-option">
-                  <input type="checkbox" name="filmType" value="premium">
-                  <span class="option-content">
-                    <span class="option-title">Premium Film</span>
-                    <span class="option-desc">คุณภาพสูงสุด</span>
-                  </span>
-                </label>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="budget">งบประมาณโดยประมาณ</label>
-              <select id="budget" name="budget">
-                <option value="">เลือกงบประมาณ</option>
-                <option value="under-10000">ต่ำกว่า 10,000 บาท</option>
-                <option value="10000-20000">10,000 - 20,000 บาท</option>
-                <option value="20000-30000">20,000 - 30,000 บาท</option>
-                <option value="over-30000">มากกว่า 30,000 บาท</option>
-                <option value="flexible">ยืดหยุ่นได้</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="additionalNotes">ข้อมูลเพิ่มเติม</label>
-              <textarea id="additionalNotes" name="additionalNotes" rows="3" placeholder="รายละเอียดเพิ่มเติม คำถาม หรือความต้องการพิเศษ"></textarea>
-            </div>
-          </div>
-        </div>
-
-        <!-- Form Navigation -->
-        <div class="form-navigation">
-          <button type="button" class="btn-secondary" id="prevBtn" style="display: none;">
-            <span class="btn-icon">←</span>
-            <span>ย้อนกลับ</span>
-          </button>
+      <!-- Step 4: Confirmation -->
+      <div class="form-section" data-section="4">
+        <div class="summary-card">
+          <h3 class="summary-title">สรุปการจอง</h3>
           
-          <button type="button" class="btn-primary" id="nextBtn">
-            <span>ถัดไป</span>
-            <span class="btn-icon">→</span>
-          </button>
+          <div class="summary-item">
+            <span class="summary-label">บริการ:</span>
+            <span class="summary-value" id="summaryService">-</span>
+          </div>
           
-          <button type="submit" class="btn-submit" id="submitBtn" style="display: none;">
-            <span class="btn-text">ส่งการจอง</span>
-            <span class="btn-icon">✓</span>
-          </button>
+          <div class="summary-item">
+            <span class="summary-label">รถ:</span>
+            <span class="summary-value" id="summaryCar">-</span>
+          </div>
+          
+          <div class="summary-item">
+            <span class="summary-label">เบอร์ฟิล์ม:</span>
+            <span class="summary-value" id="summaryFilm">-</span>
+          </div>
+          
+          <div class="summary-item">
+            <span class="summary-label">วันที่:</span>
+            <span class="summary-value" id="summaryDate">-</span>
+          </div>
+          
+          <div class="summary-item">
+            <span class="summary-label">เวลา:</span>
+            <span class="summary-value" id="summaryTime">-</span>
+          </div>
+          
+          <div class="summary-item">
+            <span class="summary-label">บริการเสริม:</span>
+            <span class="summary-value" id="summaryAddons">-</span>
+          </div>
+          
+          <div class="summary-divider"></div>
+          
+          <div class="summary-total">
+            <span>ราคาประมาณการ:</span>
+            <span id="summaryTotal">฿5,500</span>
+          </div>
         </div>
-      </form>
 
-      <!-- Booking Summary -->
-      <div class="booking-summary" data-aos="fade-up" data-aos-delay="200">
-        <h3>ทำไมต้องเลือกเรา?</h3>
-        <div class="summary-features">
-          <div class="feature">
-            <span class="feature-icon">🏆</span>
-            <div class="feature-content">
-              <h4>ประสบการณ์ 10+ ปี</h4>
-              <p>ช่างมืออาชีพ ติดตั้งแล้วกว่า 5,000 คัน</p>
-            </div>
+        <div class="form-card">
+          <h2 class="section-title">
+            <i class="fas fa-user-check"></i>
+            ข้อมูลผู้จอง
+          </h2>
+          
+          <div class="summary-item">
+            <span class="summary-label">ชื่อ:</span>
+            <span class="summary-value" id="summaryName">-</span>
           </div>
-          <div class="feature">
-            <span class="feature-icon">✨</span>
-            <div class="feature-content">
-              <h4>คุณภาพระดับโลก</h4>
-              <p>ฟิล์มนำเข้า รับประกาน 7 ปีเต็ม</p>
-            </div>
+          
+          <div class="summary-item">
+            <span class="summary-label">โทร:</span>
+            <span class="summary-value" id="summaryPhone">-</span>
           </div>
-          <div class="feature">
-            <span class="feature-icon">🚚</span>
-            <div class="feature-content">
-              <h4>บริการถึงบ้าน</h4>
-              <p>ฟรีค่าเดินทาง ติดตั้งที่บ้านคุณ</p>
-            </div>
+          
+          <div class="summary-item">
+            <span class="summary-label">สถานที่:</span>
+            <span class="summary-value" id="summaryLocation">-</span>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Success Modal -->
-  <div id="successModal" class="modal">
-    <div class="modal-content">
-      <div class="success-animation">
-        <div class="checkmark">✓</div>
+        <div class="form-card" style="background: #fef3c7; border: 2px solid #fbbf24;">
+          <p style="color: #92400e; font-size: 14px; line-height: 1.6;">
+            <strong>หมายเหตุ:</strong> ราคาเป็นการประมาณการเบื้องต้น ราคาจริงอาจปรับเปลี่ยนตามขนาดและรุ่นรถ ทางเราจะติดต่อกลับเพื่อยืนยันราคาและนัดหมายอีกครั้ง
+          </p>
+        </div>
       </div>
-      <h3>จองสำเร็จ!</h3>
-      <p>เราได้รับข้อมูลการจองของคุณแล้ว<br>จะติดต่อกลับภายใน 15 นาที</p>
-      <div class="booking-ref">
-        <span>เลขอ้างอิง: <strong id="bookingRef"></strong></span>
-      </div>
-      <button onclick="closeSuccessModal()" class="btn-primary">
-        ตกลง
+    </form>
+
+    <!-- Navigation -->
+    <div class="form-navigation">
+      <button type="button" class="nav-btn btn-prev" id="prevBtn" style="display: none;">
+        <i class="fas fa-arrow-left"></i>
+        ย้อนกลับ
+      </button>
+      <button type="button" class="nav-btn btn-next" id="nextBtn">
+        ถัดไป
+        <i class="fas fa-arrow-right"></i>
       </button>
     </div>
   </div>
 
-  <!-- Bottom Navigation for Mobile -->
-  <nav class="bottom-nav">
-    <div class="bottom-nav-items">
-      <a href="index.html#problem" class="bottom-nav-item">
-        <div class="bottom-nav-icon">🔥</div>
-        <span>ปัญหา</span>
-      </a>
-      <a href="index.html#solution" class="bottom-nav-item">
-        <div class="bottom-nav-icon">✨</div>
-        <span>วิธีแก้</span>
-      </a>
-      <a href="index.html#testimonials" class="bottom-nav-item">
-        <div class="bottom-nav-icon">⭐</div>
-        <span>รีวิว</span>
-      </a>
-      <a href="index.html#contact" class="bottom-nav-item">
-        <div class="bottom-nav-icon">📞</div>
-        <span>ติดต่อ</span>
-      </a>
-      <a href="booking.html" class="bottom-nav-item bottom-nav-cta active">
-        <div class="bottom-nav-icon">📅</div>
-        <span>จอง</span>
-      </a>
+  <!-- Success Modal -->
+  <div class="success-modal" id="successModal">
+    <div class="success-content">
+      <div class="success-icon">
+        <i class="fas fa-check"></i>
+      </div>
+      <h2 class="success-title">จองคิวสำเร็จ!</h2>
+      <p class="success-message">
+        เราได้รับข้อมูลการจองของคุณเรียบร้อยแล้ว<br>
+        ทีมงานจะติดต่อกลับภายใน 15 นาที
+      </p>
+      
+      <div class="success-details">
+        <div class="detail-item">
+          <span class="detail-label">หมายเลขการจอง:</span>
+          <span class="detail-value" id="bookingNumber">BK2025010001</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">วันที่จอง:</span>
+          <span class="detail-value" id="bookingDate">-</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">เวลา:</span>
+          <span class="detail-value" id="bookingTime">-</span>
+        </div>
+      </div>
+      
+      <div class="success-actions">
+        <button class="success-btn btn-home" onclick="window.location.href='index.html'">
+          กลับหน้าหลัก
+        </button>
+        <button class="success-btn btn-line" onclick="window.open('https://lin.ee/jxXqHfI', '_blank')">
+          แชทผ่าน LINE
+        </button>
+      </div>
     </div>
-  </nav>
-
-  <!-- Chat Widget -->
-  <div class="chat-widget">
-    <button class="chat-button" onclick="openChat()" data-track="chat_open">
-      <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
-      </svg>
-    </button>
   </div>
 
-  <script src="main.js"></script>
-  <script src="booking.js"></script>
-  <script src="analytics.js"></script>
+  <!-- Loading -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/th.js"></script>
+  
+  <!-- Google Maps -->
+  <script>
+    let map;
+    let marker;
+    let geocoder;
+    let autocomplete;
+    
+    function initMap() {
+      console.log('🗺️ Initializing Google Maps...');
+      
+      // Bangkok center
+      const defaultLocation = { lat: 13.7563, lng: 100.5018 };
+      
+      try {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: defaultLocation,
+          zoom: 15,
+          styles: [
+            {
+              "featureType": "poi",
+              "elementType": "labels",
+              "stylers": [{ "visibility": "off" }]
+            }
+          ],
+          mapTypeControl: false,
+          fullscreenControl: false,
+          streetViewControl: false
+        });
+        
+        console.log('✅ Map initialized successfully');
+        
+        geocoder = new google.maps.Geocoder();
+        
+        // Search box
+        const searchBox = document.getElementById('searchAddress');
+        if (searchBox) {
+          autocomplete = new google.maps.places.Autocomplete(searchBox, {
+            componentRestrictions: { country: 'th' }
+          });
+          
+          autocomplete.addListener('place_changed', function() {
+            const place = autocomplete.getPlace();
+            if (place.geometry) {
+              map.setCenter(place.geometry.location);
+              map.setZoom(17);
+              placeMarker(place.geometry.location);
+            }
+          });
+          console.log('✅ Search autocomplete initialized');
+        }
+        
+        // Click to place marker
+        map.addListener('click', function(e) {
+          console.log('🎯 Map clicked at:', e.latLng.lat(), e.latLng.lng());
+          placeMarker(e.latLng);
+        });
+        
+        console.log('✅ Map click listener added');
+        
+        // Try to get current location
+        getCurrentLocation();
+        
+      } catch (error) {
+        console.error('❌ Error initializing map:', error);
+      }
+    }
+
+    // Add global error handling for Google Maps
+    window.gm_authFailure = function() {
+      console.error('❌ Google Maps authentication failed');
+      alert('ไม่สามารถโหลดแผนที่ได้ กรุณาลองใหม่อีกครั้ง');
+    };
+    
+    function placeMarker(location) {
+      console.log('📍 Placing marker at:', location.lat(), location.lng());
+      
+      try {
+        if (marker) {
+          marker.setMap(null);
+          console.log('🗑️ Removed existing marker');
+        }
+        
+        marker = new google.maps.Marker({
+          position: location,
+          map: map,
+          animation: google.maps.Animation.DROP
+        });
+        
+        console.log('✅ Marker placed successfully');
+        
+        const lat = location.lat();
+        const lng = location.lng();
+        
+        document.getElementById('latitude').value = lat;
+        document.getElementById('longitude').value = lng;
+        
+        // Show and update LatLong display
+        const latLongDisplay = document.getElementById('latLongDisplay');
+        const latLongText = document.getElementById('latLongText');
+        latLongDisplay.style.display = 'block';
+        latLongText.value = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+        
+        console.log('✅ LatLng display updated:', latLongText.value);
+        
+        // Get address from coordinates and populate the editable search field
+        geocoder.geocode({ location: location }, function(results, status) {
+          if (status === 'OK' && results[0]) {
+            document.getElementById('searchAddress').value = results[0].formatted_address;
+            console.log('✅ Address updated:', results[0].formatted_address);
+          } else {
+            console.log('⚠️ Geocoding failed:', status);
+          }
+        });
+        
+      } catch (error) {
+        console.error('❌ Error placing marker:', error);
+      }
+    }
+    
+    function getCurrentLocation() {
+      console.log('📍 Attempting to get current location...');
+      
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function(position) {
+            console.log('✅ Location obtained:', position.coords.latitude, position.coords.longitude);
+            
+            const pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            map.setCenter(pos);
+            map.setZoom(17);
+            placeMarker(new google.maps.LatLng(pos.lat, pos.lng));
+          },
+          function(error) {
+            console.log('⚠️ Location access error:', error.message);
+            console.log('ℹ️ Map will use default Bangkok location');
+          }
+        );
+      } else {
+        console.log('⚠️ Geolocation not supported');
+      }
+    }
+  </script>
+  
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqVykqGvUnJlXrTSqn2xjvn3nH2PVLbLY&libraries=places&callback=initMap"></script>
+  
+  <script>
+    // Form logic
+    let currentStep = 1;
+    const totalSteps = 4;
+    const formData = {
+      service: '',
+      brand: '',
+      model: '',
+      film: '',
+      addons: [],
+      date: '',
+      time: '',
+      name: '',
+      phone: '',
+      email: '',
+      line: '',
+      latitude: '',
+      longitude: '',
+      address: '',
+      addressDetail: '',
+      note: ''
+    };
+    
+    // Calendar
+    let currentMonth = new Date();
+    
+    function generateCalendar() {
+      const year = currentMonth.getFullYear();
+      const month = currentMonth.getMonth();
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const today = new Date();
+      
+      const monthNames = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 
+                         'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
+      const dayNames = ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'];
+      
+      document.getElementById('currentMonth').textContent = `${monthNames[month]} ${year + 543}`;
+      
+      let html = '';
+      
+      // Day labels
+      dayNames.forEach(day => {
+        html += `<div class="day-label">${day}</div>`;
+      });
+      
+      // Empty cells before first day
+      for (let i = 0; i < firstDay; i++) {
+        html += `<div></div>`;
+      }
+      
+      // Days
+      for (let day = 1; day <= daysInMonth; day++) {
+        const date = new Date(year, month, day);
+        const isToday = date.toDateString() === today.toDateString();
+        const isPast = date < today && !isToday;
+        const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+        
+        let classes = 'calendar-day';
+        if (isToday) classes += ' today';
+        if (isPast) classes += ' disabled';
+        if (!isPast && Math.random() > 0.3) classes += ' has-slots';
+        
+        html += `<div class="${classes}" data-date="${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}" onclick="selectDate(this)">
+                  ${day}
+                </div>`;
+      }
+      
+      document.getElementById('calendarGrid').innerHTML = html;
+    }
+    
+    function changeMonth(direction) {
+      currentMonth.setMonth(currentMonth.getMonth() + direction);
+      generateCalendar();
+    }
+    
+    function selectDate(element) {
+      if (element.classList.contains('disabled')) return;
+      
+      document.querySelectorAll('.calendar-day').forEach(day => {
+        day.classList.remove('selected');
+      });
+      
+      element.classList.add('selected');
+      document.getElementById('selectedDate').value = element.dataset.date;
+      formData.date = element.dataset.date;
+      
+      // Update available time slots (simulation)
+      updateTimeSlots();
+    }
+    
+    function updateTimeSlots() {
+      const slots = document.querySelectorAll('.time-slot');
+      slots.forEach(slot => {
+        // Remove disabled status and set all to available for now
+        slot.classList.remove('disabled');
+        slot.querySelector('.slot-status').textContent = 'ว่าง';
+        
+        // Note: This function will be connected to backend JS later
+        // The disabled CSS classes are preserved for future use
+      });
+    }
+    
+    // Service selection
+    document.querySelectorAll('.service-option[data-service]').forEach(option => {
+      option.addEventListener('click', function() {
+        document.querySelectorAll('.service-option[data-service]').forEach(opt => {
+          opt.classList.remove('selected');
+        });
+        this.classList.add('selected');
+        formData.service = this.dataset.service;
+        
+        if (formData.service === 'car') {
+          document.getElementById('carSection').style.display = 'block';
+        } else {
+          document.getElementById('carSection').style.display = 'none';
+        }
+      });
+    });
+    
+    // Car brand selection
+    document.querySelectorAll('.car-brand').forEach(brand => {
+      brand.addEventListener('click', function() {
+        document.querySelectorAll('.car-brand').forEach(b => {
+          b.classList.remove('selected');
+        });
+        this.classList.add('selected');
+        formData.brand = this.dataset.brand;
+        
+        // Show/hide custom brand input
+        const customBrandSection = document.getElementById('customBrandSection');
+        if (this.dataset.brand === 'Other') {
+          customBrandSection.style.display = 'block';
+        } else {
+          customBrandSection.style.display = 'none';
+          document.getElementById('customBrand').value = '';
+        }
+      });
+    });
+
+    // Custom brand input handler
+    document.getElementById('customBrand').addEventListener('input', function() {
+      if (formData.brand === 'Other') {
+        formData.customBrand = this.value;
+      }
+    });
+    
+    // Film selection (multiple, max 2)
+    document.querySelectorAll('.service-option[data-film]').forEach(option => {
+      option.addEventListener('click', function() {
+        const selectedFilms = document.querySelectorAll('.service-option[data-film].selected');
+        
+        if (this.classList.contains('selected')) {
+          // Unselect if already selected
+          this.classList.remove('selected');
+          formData.film = formData.film.split(',').filter(f => f !== this.dataset.film).join(',');
+        } else if (selectedFilms.length < 2) {
+          // Select if less than 2 are selected
+          this.classList.add('selected');
+          if (formData.film) {
+            formData.film += ',' + this.dataset.film;
+          } else {
+            formData.film = this.dataset.film;
+          }
+        } else {
+          // Show message if trying to select more than 2
+          alert('สามารถเลือกความเข้มของฟิล์มได้สูงสุด 2 อัน');
+        }
+      });
+    });
+    
+    // Add-ons selection
+    document.querySelectorAll('.addon-item').forEach(addon => {
+      addon.addEventListener('click', function() {
+        this.classList.toggle('selected');
+        const addonData = {
+          name: this.dataset.addon,
+          price: parseInt(this.dataset.price)
+        };
+        
+        if (this.classList.contains('selected')) {
+          formData.addons.push(addonData);
+        } else {
+          formData.addons = formData.addons.filter(a => a.name !== addonData.name);
+        }
+        
+        updateSummary();
+      });
+    });
+    
+    // Time slot selection
+    document.querySelectorAll('.time-slot').forEach(slot => {
+      slot.addEventListener('click', function() {
+        if (this.classList.contains('disabled')) return;
+        
+        document.querySelectorAll('.time-slot').forEach(s => {
+          s.classList.remove('selected');
+        });
+        this.classList.add('selected');
+        document.getElementById('selectedTime').value = this.dataset.time;
+        formData.time = this.dataset.time;
+      });
+    });
+    
+    // Navigation
+    document.getElementById('nextBtn').addEventListener('click', function() {
+      if (validateStep(currentStep)) {
+        if (currentStep === totalSteps) {
+          submitForm();
+        } else {
+          goToStep(currentStep + 1);
+        }
+      }
+    });
+    
+    document.getElementById('prevBtn').addEventListener('click', function() {
+      goToStep(currentStep - 1);
+    });
+    
+    function goToStep(step) {
+      if (step < 1 || step > totalSteps) return;
+      
+      // Hide current section
+      document.querySelector(`.form-section[data-section="${currentStep}"]`).classList.remove('active');
+      document.querySelector(`.step[data-step="${currentStep}"]`).classList.remove('active');
+      
+      // Show new section
+      document.querySelector(`.form-section[data-section="${step}"]`).classList.add('active');
+      document.querySelector(`.step[data-step="${step}"]`).classList.add('active');
+      
+      // Mark completed steps
+      for (let i = 1; i < step; i++) {
+        document.querySelector(`.step[data-step="${i}"]`).classList.add('completed');
+      }
+      
+      currentStep = step;
+      
+      // Update navigation buttons
+      if (currentStep === 1) {
+        document.getElementById('prevBtn').style.display = 'none';
+      } else {
+        document.getElementById('prevBtn').style.display = 'flex';
+      }
+      
+      if (currentStep === totalSteps) {
+        document.getElementById('nextBtn').innerHTML = '<i class="fas fa-check"></i> ยืนยันการจอง';
+        document.getElementById('nextBtn').classList.add('btn-submit');
+        updateSummary();
+      } else {
+        document.getElementById('nextBtn').innerHTML = 'ถัดไป <i class="fas fa-arrow-right"></i>';
+        document.getElementById('nextBtn').classList.remove('btn-submit');
+      }
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    function validateStep(step) {
+      let isValid = true;
+      
+      if (step === 1) {
+        // Validate service selection
+        if (!formData.service) {
+          document.querySelector('.service-options').parentElement.querySelector('.error-message').classList.add('show');
+          isValid = false;
+        }
+        
+        if (formData.service === 'car' && (!formData.brand || !document.getElementById('carModel').value)) {
+          if (!formData.brand) {
+            document.querySelector('.car-brands').parentElement.querySelector('.error-message').classList.add('show');
+          }
+          if (!document.getElementById('carModel').value) {
+            document.getElementById('carModel').classList.add('error');
+            document.getElementById('carModel').parentElement.querySelector('.error-message').classList.add('show');
+          }
+          isValid = false;
+        }
+        
+        if (!formData.film) {
+          document.querySelectorAll('.service-option[data-film]')[0].parentElement.parentElement.querySelector('.error-message').classList.add('show');
+          isValid = false;
+        }
+        
+        if (isValid) {
+          formData.model = document.getElementById('carModel').value;
+        }
+      }
+      
+      if (step === 2) {
+        // Validate date and time
+        if (!formData.date) {
+          document.getElementById('calendarGrid').parentElement.querySelector('.error-message').classList.add('show');
+          isValid = false;
+        }
+        
+        if (!formData.time) {
+          document.querySelector('.time-slots').parentElement.querySelector('.error-message').classList.add('show');
+          isValid = false;
+        }
+      }
+      
+      if (step === 3) {
+        // Validate customer information
+        const name = document.getElementById('customerName').value;
+        const phone = document.getElementById('customerPhone').value;
+        const email = document.getElementById('customerEmail').value;
+        
+        if (!name) {
+          document.getElementById('customerName').classList.add('error');
+          document.getElementById('customerName').parentElement.querySelector('.error-message').classList.add('show');
+          isValid = false;
+        }
+        
+        if (!phone || !/^0[0-9]{9}$/.test(phone)) {
+          document.getElementById('customerPhone').classList.add('error');
+          document.getElementById('customerPhone').parentElement.querySelector('.error-message').classList.add('show');
+          isValid = false;
+        }
+        
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          document.getElementById('customerEmail').classList.add('error');
+          document.getElementById('customerEmail').parentElement.querySelector('.error-message').classList.add('show');
+          isValid = false;
+        }
+        
+        if (!document.getElementById('latitude').value || !document.getElementById('longitude').value) {
+          document.querySelector('.map-container').parentElement.querySelector('.error-message').classList.add('show');
+          isValid = false;
+        }
+        
+        if (isValid) {
+          formData.name = name;
+          formData.phone = phone;
+          formData.email = email;
+          formData.line = document.getElementById('customerLine').value;
+          formData.latitude = document.getElementById('latitude').value;
+          formData.longitude = document.getElementById('longitude').value;
+          formData.address = document.getElementById('searchAddress').value;
+          formData.addressDetail = document.getElementById('addressDetail').value;
+          formData.note = document.getElementById('customerNote').value;
+        }
+      }
+      
+      if (!isValid) {
+        // Shake animation for errors
+        document.querySelector('.form-card').classList.add('shake');
+        setTimeout(() => {
+          document.querySelector('.form-card').classList.remove('shake');
+        }, 500);
+      }
+      
+      return isValid;
+    }
+    
+    function updateSummary() {
+      // Service
+      const serviceText = formData.service === 'car' ? 'ฟิล์มรถยนต์' : 'ฟิล์มบ้าน/อาคาร';
+      document.getElementById('summaryService').textContent = serviceText;
+      
+      // Car
+      if (formData.service === 'car') {
+        document.getElementById('summaryCar').textContent = `${formData.brand} ${formData.model}`;
+      } else {
+        document.getElementById('summaryCar').textContent = '-';
+      }
+      
+      // Film
+      document.getElementById('summaryFilm').textContent = formData.film ? `${formData.film}%` : '-';
+      
+      // Date
+      if (formData.date) {
+        const date = new Date(formData.date);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('summaryDate').textContent = date.toLocaleDateString('th-TH', options);
+      }
+      
+      // Time
+      document.getElementById('summaryTime').textContent = formData.time || '-';
+      
+      // Add-ons
+      if (formData.addons.length > 0) {
+        const addonNames = formData.addons.map(a => {
+          switch(a.name) {
+            case 'remove': return 'ลอกฟิล์มเก่า';
+            case 'ceramic': return 'ฟิล์มเซรามิค';
+            case 'warranty': return 'ประกัน 10 ปี';
+            default: return '';
+          }
+        });
+        document.getElementById('summaryAddons').textContent = addonNames.join(', ');
+      } else {
+        document.getElementById('summaryAddons').textContent = 'ไม่มี';
+      }
+      
+      // Customer info
+      document.getElementById('summaryName').textContent = formData.name || '-';
+      document.getElementById('summaryPhone').textContent = formData.phone || '-';
+      document.getElementById('summaryLocation').textContent = formData.address || '-';
+      
+      // Calculate total
+      let total = 5500; // Base price
+      formData.addons.forEach(addon => {
+        total += addon.price;
+      });
+      document.getElementById('summaryTotal').textContent = `฿${total.toLocaleString()}`;
+    }
+    
+    function submitForm() {
+      // Show loading
+      document.getElementById('loadingOverlay').classList.add('show');
+      
+      // Simulate API call
+      setTimeout(() => {
+        // Generate booking number
+        const bookingNumber = 'BK' + new Date().getFullYear() + String(Math.floor(Math.random() * 100000)).padStart(5, '0');
+        document.getElementById('bookingNumber').textContent = bookingNumber;
+        
+        // Set booking details
+        const date = new Date(formData.date);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('bookingDate').textContent = date.toLocaleDateString('th-TH', options);
+        document.getElementById('bookingTime').textContent = formData.time;
+        
+        // Hide loading
+        document.getElementById('loadingOverlay').classList.remove('show');
+        
+        // Show success modal
+        document.getElementById('successModal').classList.add('show');
+        
+        // Save to localStorage or send to backend
+        localStorage.setItem('lastBooking', JSON.stringify({
+          ...formData,
+          bookingNumber: bookingNumber,
+          timestamp: new Date().toISOString()
+        }));
+        
+        // You can send data to your backend here
+        // Example: sendToFirebase(formData);
+      }, 2000);
+    }
+    
+    // Clear error messages on input
+    document.querySelectorAll('.form-input').forEach(input => {
+      input.addEventListener('input', function() {
+        this.classList.remove('error');
+        this.parentElement.querySelector('.error-message').classList.remove('show');
+      });
+    });
+    
+    // Initialize calendar on load
+    generateCalendar();
+    
+    // Phone number formatting
+    document.getElementById('customerPhone').addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length > 10) {
+        value = value.substr(0, 10);
+      }
+      e.target.value = value;
+    });
+  </script>
 </body>
 </html>
