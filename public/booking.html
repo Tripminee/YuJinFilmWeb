@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <title>จองคิวติดฟิล์ม | YuJin Film Solution</title>
+  <meta name="description" content="จองคิวติดตั้งฟิล์มกรองแสงรถยนต์ บริการถึงบ้าน สะดวก รวดเร็ว">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Flatpickr for Date Picker -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+  
+  <!-- Booking Styles -->
+  <link rel="stylesheet" href="../src/css/pages/booking-styles.css">
+</head>
+<body>
+  <div class="booking-container">
+    <!-- Header -->
+    <div class="booking-header">
+      <button class="back-btn" id="backButton" onclick="window.redirectToHome ? window.redirectToHome() : (window.location.href = 'index.html')">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <h1>จองคิวติดฟิล์ม</h1>
+      <p>บริการติดตั้งถึงบ้าน สะดวก รวดเร็ว</p>
+    </div>
+
+    <!-- Progress Steps -->
+    <div class="progress-steps">
+      <div class="step active" data-step="1">
+        <div class="step-circle">1</div>
+        <div class="step-label">บริการ</div>
+      </div>
+      <div class="step" data-step="2">
+        <div class="step-circle">2</div>
+        <div class="step-label">วันเวลา</div>
+      </div>
+      <div class="step" data-step="3">
+        <div class="step-circle">3</div>
+        <div class="step-label">ข้อมูล</div>
+      </div>
+      <div class="step" data-step="4">
+        <div class="step-circle">4</div>
+        <div class="step-label">ยืนยัน</div>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <form id="bookingForm">
+      <!-- Step 1: Service Selection -->
+      <div class="form-section active" data-section="1">
+        <div class="form-card">
+          <h2 class="section-title">
+            <i class="fas fa-car"></i>
+            เลือกประเภทบริการ
+          </h2>
+          
+          <div class="form-group">
+            <label class="form-label">ประเภทบริการ <span class="required">*</span></label>
+            <div class="service-options">
+              <div class="service-option" data-service="car">
+                <div class="service-name">ฟิล์มรถยนต์</div>
+                <div class="service-desc">ติดฟิล์มกรองแสงรถยนต์ทุกรุ่น</div>
+              </div>
+              <div class="service-option" data-service="building">
+                <div class="service-name">ฟิล์มบ้าน/อาคาร</div>
+                <div class="service-desc">ติดฟิล์มกระจกบ้านและอาคาร</div>
+              </div>
+            </div>
+            <div class="error-message">กรุณาเลือกประเภทบริการ</div>
+          </div>
+
+          <div class="form-group" id="carSection" style="display: none;">
+            <label class="form-label">ยี่ห้อรถ <span class="required">*</span></label>
+            <div class="car-brands">
+              <div class="car-brand" data-brand="Toyota">Toyota</div>
+              <div class="car-brand" data-brand="Honda">Honda</div>
+              <div class="car-brand" data-brand="Mazda">Mazda</div>
+              <div class="car-brand" data-brand="Nissan">Nissan</div>
+              <div class="car-brand" data-brand="BMW">BMW</div>
+              <div class="car-brand" data-brand="Mercedes">Mercedes</div>
+              <div class="car-brand" data-brand="Tesla">Tesla</div>
+              <div class="car-brand" data-brand="BYD">BYD</div>
+              <div class="car-brand" data-brand="MG">MG</div>
+              <div class="car-brand" data-brand="GWM">GWM</div>
+              <div class="car-brand" data-brand="Neta">Neta</div>
+              <div class="car-brand" data-brand="Other">อื่นๆ</div>
+            </div>
+            
+            <!-- Custom brand input for "Other" option -->
+            <div class="form-group" id="customBrandSection" style="display: none;">
+              <label class="form-label">ระบุยี่ห้อรถ <span class="required">*</span></label>
+              <input type="text" class="form-input" id="customBrand" placeholder="กรอกยี่ห้อรถ">
+              <div class="error-message">กรุณาระบุยี่ห้อรถ</div>
+            </div>
+            
+            <label class="form-label" style="margin-top: 16px;">รุ่นรถ <span class="required">*</span></label>
+            <input type="text" class="form-input" id="carModel" placeholder="เช่น Civic, Camry, Model 3">
+            <div class="error-message">กรุณากรอกรุ่นรถ</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">เบอร์ฟิล์ม <span class="required">*</span></label>
+            <div class="service-options">
+              <div class="service-option" data-film="40">
+                <div class="service-name">40%</div>
+                <div class="service-desc">กรองแสง 60% เหมาะกับกระจกด้านหน้า</div>
+              </div>
+              <div class="service-option" data-film="60">
+                <div class="service-name">60%</div>
+                <div class="service-desc">กรองแสง 40% ความเข้มปานกลาง</div>
+              </div>
+              <div class="service-option" data-film="80">
+                <div class="service-name">80%</div>
+                <div class="service-desc">กรองแสง 20% เข้มเหมาะกับด้านหลัง</div>
+              </div>
+            </div>
+            <div class="error-message">กรุณาเลือกเบอร์ฟิล์ม</div>
+          </div>
+
+          <!-- Building/Home Image Upload Section -->
+          <div class="form-group" id="buildingImageSection" style="display: none;">
+            <label class="form-label">อัพโหลดรูปภาพหน้าต่าง/กระจก</label>
+            <p class="upload-desc">อัพโหลดรูปภาพของหน้าต่างหรือกระจกที่ต้องการติดฟิล์ม เพื่อให้เราประเมินราคาได้แม่นยำขึ้น</p>
+            
+            <div class="image-upload-container">
+              <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <div class="upload-text">
+                  <span class="upload-main-text">คลิกเพื่อเลือกรูปภาพ</span>
+                  <span class="upload-sub-text">หรือลากรูปภาพมาวางที่นี่</span>
+                </div>
+                <input type="file" id="buildingImages" name="buildingImages[]" multiple accept="image/*" style="display: none;">
+              </div>
+              
+              <div class="uploaded-images" id="uploadedImages" style="display: none;">
+                <div class="images-grid" id="imagesGrid"></div>
+                <button type="button" class="add-more-btn" onclick="document.getElementById('buildingImages').click()">
+                  <i class="fas fa-plus"></i>
+                  เพิ่มรูปภาพ
+                </button>
+              </div>
+            </div>
+            
+            <div class="upload-info">
+              <small>
+                <i class="fas fa-info-circle"></i>
+                รองรับไฟล์ JPG, PNG ขนาดไม่เกิน 5MB ต่อไฟล์ (อัพโหลดได้สูงสุด 5 รูป)
+              </small>
+            </div>
+          </div>
+
+          <!-- Free Services Section -->
+          <div class="form-group">
+            <h3 class="free-services-title">
+              <i class="fas fa-gift"></i>
+              บริการฟรี
+            </h3>
+            <div class="free-services-list">
+              <div class="free-service-item">
+                <div class="service-check">✓</div>
+                <div class="service-text">ลอกฟิล์มเก่า</div>
+              </div>
+              <div class="free-service-item">
+                <div class="service-check">✓</div>
+                <div class="service-text">บริการหลังการขาย</div>
+              </div>
+              <div class="free-service-item">
+                <div class="service-check">✓</div>
+                <div class="service-text">รับประกันทุกฟิล์ม ทุกยี่ห้อ</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">บริการเสริม</label>
+            <div class="addon-list">
+              <div class="addon-item" data-addon="insurance" data-price="2500">
+                <div class="addon-checkbox"></div>
+                <div class="addon-info">
+                  <div class="addon-name">ต่อประกันรถยนต์ราคาสุดคุ้ม</div>
+                  <div class="addon-price">ยูจินจะรีบติดต่อกลับไปเพื่อนำเสนอราคาให้นะคะ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Date & Time -->
+      <div class="form-section" data-section="2">
+        <div class="form-card">
+          <h2 class="section-title">
+            <i class="fas fa-calendar"></i>
+            เลือกวันและเวลา
+          </h2>
+          
+          <div class="form-group">
+            <label class="form-label">เลือกวันที่ <span class="required">*</span></label>
+            <div class="calendar-header">
+              <div class="month-year" id="currentMonth">มกราคม 2025</div>
+              <div class="calendar-nav">
+                <button type="button" onclick="changeMonth(-1)">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button type="button" onclick="changeMonth(1)">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+            <div class="calendar-grid" id="calendarGrid">
+              <!-- Calendar will be generated here -->
+            </div>
+            <input type="hidden" id="selectedDate" name="date">
+            <div class="error-message">กรุณาเลือกวันที่</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">เลือกเวลา <span class="required">*</span></label>
+            <div class="time-slots">
+              <div class="time-slot" data-time="07:00">
+                <div class="slot-time">07:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="08:00">
+                <div class="slot-time">08:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="09:00">
+                <div class="slot-time">09:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="10:00">
+                <div class="slot-time">10:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="11:00">
+                <div class="slot-time">11:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="13:00">
+                <div class="slot-time">13:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="14:00">
+                <div class="slot-time">14:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="15:00">
+                <div class="slot-time">15:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="16:00">
+                <div class="slot-time">16:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+              <div class="time-slot" data-time="17:00">
+                <div class="slot-time">17:00</div>
+                <div class="slot-status">ว่าง</div>
+              </div>
+            </div>
+            <input type="hidden" id="selectedTime" name="time">
+            <div class="error-message">กรุณาเลือกเวลา</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Customer Information -->
+      <div class="form-section" data-section="3">
+        <div class="form-card">
+          <h2 class="section-title">
+            <i class="fas fa-user"></i>
+            ข้อมูลการติดต่อ
+          </h2>
+          
+          <div class="form-group">
+            <label class="form-label">ชื่อ-นามสกุล <span class="required">*</span></label>
+            <input type="text" class="form-input" id="customerName" name="name" placeholder="กรอกชื่อ-นามสกุล">
+            <div class="error-message">กรุณากรอกชื่อ-นามสกุล</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">เบอร์โทรศัพท์ <span class="required">*</span></label>
+            <input type="tel" class="form-input" id="customerPhone" name="phone" placeholder="08x-xxx-xxxx" maxlength="10">
+            <div class="error-message">กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">อีเมล <span class="required">*</span></label>
+            <input type="email" class="form-input" id="customerEmail" name="email" placeholder="your@email.com" required>
+            <div class="error-message">กรุณากรอกอีเมลให้ถูกต้อง</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Line ID</label>
+            <input type="text" class="form-input" id="customerLine" name="line" placeholder="Line ID (ถ้ามี)">
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h2 class="section-title">
+            <i class="fas fa-map-marker-alt"></i>
+            สถานที่ติดตั้ง
+          </h2>
+          
+          <div class="form-group">
+            <label class="form-label">ปักหมุดตำแหน่ง <span class="required">*</span></label>
+            <div class="map-container">
+              <div class="map-search">
+                <input type="text" id="searchAddress" placeholder="ค้นหาสถานที่หรือที่อยู่">
+              </div>
+              <div id="map"></div>
+              <button type="button" class="current-location-btn" onclick="getCurrentLocation()">
+                <i class="fas fa-location-crosshairs"></i>
+              </button>
+            </div>
+            <input type="hidden" id="latitude" name="latitude">
+            <input type="hidden" id="longitude" name="longitude">
+            
+            <!-- LatLong Display -->
+            <div class="form-group" id="latLongDisplay" style="display: none;">
+              <label class="form-label">พิกัด (LatLng)</label>
+              <input type="text" class="form-input" id="latLongText" placeholder="ยังไม่ได้ปักหมุด" readonly>
+            </div>
+            
+            <div class="error-message">กรุณาปักหมุดตำแหน่งบนแผนที่</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">รายละเอียดที่อยู่เพิ่มเติม</label>
+            <input type="text" class="form-input" id="addressDetail" name="addressDetail" placeholder="เช่น บ้านเลขที่ ซอย หมู่บ้าน">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">หมายเหตุ</label>
+            <input type="text" class="form-input" id="customerNote" name="note" placeholder="ข้อมูลเพิ่มเติม (ถ้ามี)">
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Confirmation -->
+      <div class="form-section" data-section="4">
+        <div class="summary-card">
+          <h3 class="summary-title">สรุปการจอง</h3>
+          
+          <div class="summary-item">
+            <span class="summary-label">บริการ:</span>
+            <span class="summary-value" id="summaryService">-</span>
+          </div>
+          
+          <div class="summary-item">
+            <span class="summary-label">รถ:</span>
+            <span class="summary-value" id="summaryVehicle">-</span>
+          </div>
+          
+          <div class="summary-item">
+            <span class="summary-label">เบอร์ฟิล์ม:</span>
+            <span class="summary-value" id="summaryFilm">-</span>
+          </div>
+          
+          <div class="summary-item">
+            <span class="summary-label">วันที่:</span>
+            <span class="summary-value" id="summaryDate">-</span>
+          </div>
+          
+          <div class="summary-item">
+            <span class="summary-label">เวลา:</span>
+            <span class="summary-value" id="summaryTime">-</span>
+          </div>
+          
+          <div class="summary-item">
+            <span class="summary-label">บริการเสริม:</span>
+            <span class="summary-value" id="summaryAddons">-</span>
+          </div>
+          
+          <div class="summary-divider"></div>
+          
+          <div class="summary-total">
+            <span>ราคาประมาณการ:</span>
+            <span id="summaryTotal">฿5,500</span>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h2 class="section-title">
+            <i class="fas fa-user-check"></i>
+            ข้อมูลผู้จอง
+          </h2>
+          
+          <div class="summary-item">
+            <span class="summary-label">ชื่อ:</span>
+            <span class="summary-value" id="summaryCustomer">-</span>
+          </div>
+          
+          <div class="summary-item">
+            <span class="summary-label">โทร:</span>
+            <span class="summary-value" id="summaryPhone">-</span>
+          </div>
+          
+          <div class="summary-item">
+            <span class="summary-label">อีเมล:</span>
+            <span class="summary-value" id="summaryEmail">-</span>
+          </div>
+          
+          <div class="summary-item">
+            <span class="summary-label">สถานที่:</span>
+            <span class="summary-value" id="summaryLocation">-</span>
+          </div>
+        </div>
+
+        <div class="form-card" style="background: #fef3c7; border: 2px solid #fbbf24;">
+          <p style="color: #92400e; font-size: 14px; line-height: 1.6;">
+            <strong>หมายเหตุ:</strong> ราคาเป็นการประมาณการเบื้องต้น ราคาจริงอาจปรับเปลี่ยนตามขนาดและรุ่นรถ ทางเราจะติดต่อกลับเพื่อยืนยันราคาและนัดหมายอีกครั้ง
+          </p>
+        </div>
+      </div>
+    </form>
+
+    <!-- Navigation -->
+    <div class="form-navigation">
+      <button type="button" class="nav-btn btn-prev" id="prevBtn" style="display: none;">
+        <i class="fas fa-arrow-left"></i>
+        ย้อนกลับ
+      </button>
+      <button type="button" class="nav-btn btn-next" id="nextBtn">
+        ถัดไป
+        <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="success-modal" id="successModal">
+    <div class="success-content">
+      <div class="success-icon">
+        <i class="fas fa-check"></i>
+      </div>
+      <h2 class="success-title">จองคิวสำเร็จ!</h2>
+      <p class="success-message">
+        เราได้รับข้อมูลการจองของคุณเรียบร้อยแล้ว<br>
+        ทีมงานจะติดต่อกลับภายใน 15 นาที
+      </p>
+      
+      <div class="success-details">
+        <div class="detail-item">
+          <span class="detail-label">หมายเลขการจอง:</span>
+          <span class="detail-value" id="bookingNumber">BK2025010001</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">วันที่จอง:</span>
+          <span class="detail-value" id="bookingDate">-</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">เวลา:</span>
+          <span class="detail-value" id="bookingTime">-</span>
+        </div>
+      </div>
+      
+      <div class="success-actions">
+        <button class="success-btn btn-home" onclick="window.location.href='index.html'">
+          กลับหน้าหลัก
+        </button>
+        <button class="success-btn btn-line" onclick="window.open('https://lin.ee/jxXqHfI', '_blank')">
+          แชทผ่าน LINE
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/th.js"></script>
+  
+  <!-- Google Maps will be initialized by google-maps.js -->
+  
+  <!-- Define initMap before loading Google Maps API -->
+  <script>
+    // Global initMap function MUST be defined before API loads
+    window.initMap = function() {
+      console.log('🗺️ Google Maps API callback triggered');
+      console.log('📊 Google API status:', typeof google !== 'undefined' ? 'Available' : 'Not available');
+      console.log('📊 Maps API status:', typeof google !== 'undefined' && google.maps ? 'Available' : 'Not available');
+      console.log('📊 Places API status:', typeof google !== 'undefined' && google.maps && google.maps.places ? 'Available' : 'Not available');
+      
+      if (!window.googleMapsService) {
+        console.log('🏗️ Creating new GoogleMapsService instance');
+        window.googleMapsService = new GoogleMapsService();
+      } else {
+        console.log('♻️ Using existing GoogleMapsService instance');
+      }
+      
+      console.log('🚀 Calling googleMapsService.init()...');
+      window.googleMapsService.init();
+    };
+    
+    // Backup function for getting current location
+    window.getCurrentLocation = function() {
+      if (window.googleMapsService) {
+        window.googleMapsService.getCurrentLocation();
+      } else {
+        console.warn('⚠️ Google Maps service not initialized');
+      }
+    };
+    
+    console.log('✅ initMap function defined globally');
+  </script>
+  
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1buHQFd88w-OtwjU8xUJeMbR7XDPGyy8&libraries=places&callback=initMap"></script>
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  
+  <!-- YuJin Modular Scripts -->
+  <script src="../src/js/utils/common.js"></script>
+  <script src="../src/js/services/firebase.js"></script>
+  <script src="../src/js/services/tracking.js"></script>
+  <script src="../src/js/services/availability.js"></script>
+  <script src="../src/js/services/google-maps.js"></script>
+  <script src="../src/js/features/booking/form-handler.js"></script>
+  <script src="../src/js/features/booking/booking-form.js"></script>
+  <script src="../src/js/features/booking/booking-summary.js"></script>
+  <script src="../src/js/features/booking/image-upload.js"></script>
+  <script src="../src/js/pages/booking.js"></script>
+  
+  <!-- Page Configuration -->
+  <div id="page-config" style="display: none;"
+     data-page="booking"
+     data-version="2.0"
+     data-timestamp="2025-01-09">
+  </div>
+  
+  <!-- Immediate Functions -->
+  <!-- Page initialization will be handled by booking.js -->
+  
+  <script>
+    // Initialize booking page controllers when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('🚀 Initializing YuJin Booking Page Controllers...');
+      
+      // Initialize all controllers
+      window.bookingFormController = new BookingFormController();
+      window.bookingSummaryController = new BookingSummaryController();
+      
+      // Initialize Google Maps service (fallback if API callback fails)
+      if (typeof window.initMap !== 'function') {
+        console.warn('⚠️ initMap function not found, creating fallback...');
+        window.initMap = function() {
+          if (window.GoogleMapsService) {
+            if (!window.googleMapsService) {
+              window.googleMapsService = new GoogleMapsService();
+            }
+            window.googleMapsService.init();
+          }
+        };
+      }
+      
+      // Try to initialize map after a short delay
+      setTimeout(() => {
+        if (!window.googleMapsService) {
+          console.log('🗺️ Attempting to initialize Google Maps...');
+          if (typeof google !== 'undefined' && google.maps) {
+            console.log('✅ Google Maps API detected, calling initMap()');
+            window.initMap();
+          } else {
+            console.warn('⚠️ Google Maps API not loaded, showing fallback');
+            if (window.GoogleMapsService) {
+              if (!window.googleMapsService) {
+                window.googleMapsService = new GoogleMapsService();
+              }
+              window.googleMapsService.handleMapError();
+            }
+          }
+        } else {
+          console.log('✅ Google Maps service already initialized');
+        }
+      }, 2000);
+      
+      // Additional fallback after longer delay
+      setTimeout(() => {
+        if (!window.googleMapsService && typeof google !== 'undefined' && google.maps) {
+          console.log('🔄 Second attempt to initialize Google Maps...');
+          window.initMap();
+        }
+      }, 5000);
+      
+      console.log('✅ All booking controllers initialized');
+    });
+  </script>
+</body>
+</html>
